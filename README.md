@@ -11,6 +11,7 @@ Dependencies
 - Don't modify the .htaccess in the root folder since it is required for the url rewrite mechanism
 
 Installation Guide
+
 Execute installer.php by typing it on the address bar URL of your apache instance of your browser and follow the wizard instructions:
 1) Define MySQL user, password, host and schema Name
 2) Install the system package by clicking on Install button
