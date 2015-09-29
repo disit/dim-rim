@@ -1,0 +1,21 @@
+<!--%tpl_welcome-->
+<div id="welcome" class="">
+	<div id="side-left">{sideleft}</div>
+	<div id="side-right">
+		<h3>Welcome to </h3>
+		<h2>Repository & Index Manager</h2>
+		<div id=options>
+			<p>Start with:</p>
+			<div class=row>
+				<div class=col-md-12><a class=button href="IndexGenerator/New"><i class="sm-icon icon-new"> </i></a> Create a New Index Descriptor</div>
+				<div class=col-md-12><a class=button href="IndexGenerator/Import"><i class="sm-icon icon-import"> </i></a> Import an Index Descriptor from XML</div>
+				<div class=col-md-12><a class=button href="IndexGenerator/Open"><i class="sm-icon icon-open"> </i></a> Browse Available Index Descriptors</div>
+			</div>
+		</div>
+		<div id=rdfstores>
+		<h3>RDF Stores:</h3>
+			{stores}
+		</div>
+	</div>
+</div>
+<!--%%tpl_welcome-->

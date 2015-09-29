@@ -1,0 +1,37 @@
+<!--%tpl_memory_GraphDB-->
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rep: <http://www.openrdf.org/config/repository#>.
+@prefix sr: <http://www.openrdf.org/config/repository/sail#>.
+@prefix sail: <http://www.openrdf.org/config/sail#>.
+@prefix owlim: <http://www.ontotext.com/trree/owlim#>.
+
+[] a rep:Repository ; 
+   rep:repositoryID "{name}" ; 
+   rdfs:label "{name} GraphDB repository" ; 
+   rep:repositoryImpl [ 
+      rep:repositoryType "openrdf:SailRepository" ; 
+      sr:sailImpl [ 
+        sail:sailType "owlim:Sail" ; 
+        owlim:ruleset "owl-horst-optimized" ; 
+        owlim:storage-folder "owlim-storage" ; 
+  		owlim:owlim-license "";
+        owlim:repository-type "weighted-file-repository" ; 
+        owlim:base-URL "http://example.org/owlim#" ; 
+        owlim:imports "" ; 
+        owlim:defaultNS "" ; 
+  
+        owlim:entity-index-size "20000000" ; 
+        owlim:cache-memory "650m" ; 
+        owlim:tuple-index-memory "414m" ; 
+        owlim:enablePredicateList "true" ; 
+        owlim:predicate-memory "236m" ; 
+        owlim:fts-memory "0" ; 
+        owlim:ftsIndexPolicy "never" ; 
+        owlim:ftsLiteralsOnly "true" ; 
+        owlim:build-pcsot "true" ; 
+        owlim:build-ptsoc "false" ; 
+        owlim:in-memory-literal-properties "false" ; 
+        owlim:journaling "true" ; 
+        ] 
+    ]. 
+<!--%%tpl_memory_GraphDB-->

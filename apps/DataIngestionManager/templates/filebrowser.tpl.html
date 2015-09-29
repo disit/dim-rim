@@ -1,0 +1,62 @@
+<!--%tpl_file_browser-->
+ 	<div id="page-navbar" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <p class="navbar-text">
+                    {breadcrumbs}
+                </p>
+
+                <div class="navbar-right">
+                    <ul id="page-top-nav" class="nav navbar-nav">
+                        <li><a href="javascript:void(0)" id="page-top-link"><i class="fa fa-arrow-circle-up fa-lg"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="page-content" class="container">
+
+            
+			{message}
+            <div id="directory-list-header">
+                <div class="row">
+                    <div class="col-md-7 col-sm-6 col-xs-10">File</div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 text-right">Size</div>
+                    <div class="col-md-3 col-sm-4 hidden-xs text-right">Last Modified</div>
+                </div>
+            </div>
+
+            <ul id="directory-listing" class="nav nav-pills nav-stacked">
+
+                <!--%tpl_repeat_files-->
+                    <li data-name="{name}" data-href="{url_path}">
+                        <a href="{url_path}" class="clearfix" data-name="{name}">
+
+
+                            <div class="row">
+                                <span class="file-name col-md-7 col-sm-6 col-xs-9">
+                                    <i class="fa {icon_class} fa-fw"></i>
+                                    {name}
+                                </span>
+
+                                <span class="file-size col-md-2 col-sm-2 col-xs-3 text-right">
+                                    {file_size}
+                                </span>
+
+                                <span class="file-modified col-md-3 col-sm-4 hidden-xs text-right">
+                                    {mod_time}
+                                </span>
+                            </div>
+
+                        </a>
+
+                       
+
+                    </li>
+                 <!--%%tpl_repeat_files-->
+                 {files}
+
+            </ul>
+        </div>
+        
+<!--%%tpl_file_browser-->

@@ -1,0 +1,145 @@
+@CHARSET "ISO-8859-1";
+
+/*.sm-icon-daemon-alive
+{
+	background-image:url("../img/server_status_active.gif");	
+	background-size:32px 32px;
+}
+
+.sm-icon-daemon-on
+{
+	background-image:url("../img/on.png");	
+}
+
+.sm-icon-daemon-play
+{
+	background-image:url("../img/play.png");	
+}
+
+.sm-icon-daemon-off
+{
+	background-image:url("../img/off.png");	
+}
+
+.sm-icon-daemon-pause
+{
+	background-image:url("../img/pause.png");	
+}
+
+.sm-icon-daemon-queue
+{
+	background-image:url("../img/task.png");	
+}
+
+.sm-icon-daemon-queue-small
+{
+	background-image:url("../img/queue.gif");	
+}
+
+.sm-icon-daemon-graph-small
+{
+	background-image:url("../img/graph.gif");	
+}*/
+
+.sm-icon-graph-small
+{
+	background-image:url("../img/graph.gif");	
+}
+
+.sm-icon-queue-small
+{
+	background-image:url("../img/queue.gif");	
+}
+
+
+#BuilderStatus .panel-body
+{
+	padding:5px;
+}
+
+#BuilderStatus .panel-body
+	{
+		background-image: url("../../../img/bkgrounds/linen-gray.png");
+  		color: white;
+	}	
+
+
+#BuilderStatus .chart
+{
+	margin: 5px;
+	
+	color:white !important;
+	/*padding: 0px 5px;*/
+	box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1);
+	border: 1px solid #2B2B2F;
+	background: #3A3A41;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	padding: 0px 8px;
+	/*font-size: 10px;*/
+	
+}
+
+#BuilderStatus .jqplot-highlighter-tooltip {
+	color: black;
+}
+
+#BuilderStatus #tailholder
+{
+	height:350px;
+	word-break: break-all;
+}
+
+#BuilderStatus #BuilderCommittedTable
+{
+	table-layout:fixed;
+}
+
+#BuilderStatus #BuilderCommittedTable td:fisrt
+{
+	word-break: break-all;
+}
+
+#ProgressValues, #TimeValues
+{
+	font-size:12px;
+}
+
+#BuilderStatus #BuilderPerformance .panel-body
+{
+	height:360px;
+}
+
+div#BuilderProgress > div > div {
+  margin-bottom: 5px;
+}
+
+@media(min-width:992px)
+{
+	div#BuilderProgress
+	{
+		margin-left:-15px !important;
+	}
+}
+
+#BuilderLeft div.row div[class*="col-"]
+{
+	margin-bottom:5px;
+}
+
+div#progress-wrapper
+{
+	background: lightgray;
+ 		min-height: 64px;
+ 		padding: 5px;
+ 		border-radius:4px;
+ 		color: darkslategray;
+}
+
+div#Queue .panel-body
+{
+	min-height:240px;
+}

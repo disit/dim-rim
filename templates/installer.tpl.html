@@ -1,0 +1,229 @@
+<!--%tpl_main-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <base href="{baseUrl}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {auto_refresh}
+    <title>{title}</title>
+  </head>
+  <body>
+  	<div id="wrapper">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+          <a class="navbar-brand" href="./"><i class=logo> </i>{title}</a>
+          
+        
+        </div>
+        
+      </nav>
+	  
+	  
+      <div id="page-wrapper">
+     
+       	<div id ="installer" class="row">
+      	 	<div class="main col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6" style="margin-top:5%; ">
+      	 	
+      	 	<div class="panel panel-default">
+      	 		<div class="panel-heading">Installation Wizard</div>
+      	 		<div class="panel-body" style="min-height:400px;">
+      	 		
+      	 		<ol class="breadcrumb">
+      	 		    <!--%tpl_repeat_breadcrumb-->
+  					<li class="{active}"><span class="badge">{step}</span> {label}</li>
+	  				<!--%%tpl_repeat_breadcrumb-->
+	  				{breadcrumb}
+				</ol>
+      	 		<div class="progress">
+     			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{step}" aria-valuemin="1" aria-valuemax="{max_step}" style="width: {step_perc}%;">
+      				 {step_str}
+     			</div>
+   				</div>
+      	 		<div class="left {picture}">
+				
+				</div>
+				<div class="right well">
+				{content}
+      	 		</div>
+      	 		<div class=row>
+      	 			<div id="system-message" class="message col-md-12">
+      					{message}
+      				</div>
+      			</div>
+         	</div>	
+	  		</div>
+	  	</div>
+      </div><!-- /#page-wrapper -->
+
+    </div>
+</body>
+</html>
+<!--%%tpl_main-->
+
+<!--%tpl_step_1-->
+<h3>Terms and Conditions</h3>
+<textarea id=install_log>.....</textarea>
+<form id="form-step" method="post"><!-- Encase all options in this form -->
+                    
+                    <div id="div-connect">
+                    	<div class="form-group">
+                        <label class="radio-inline">
+  						<input type="radio" id="accept" name="accept" value="1"><b>Accept</b>
+						</label>
+						<label class="radio-inline">
+ 						<input type="radio" id="accept2" name="accept" value="0"><b>Do not accept</b> 
+						</label>
+                        </div>
+                        <input name="step" type="hidden" value="1" />
+                    	<input name="nextstep" type="hidden" value="2" />
+                        <button id="stepbtn" class="button btn-sm" style="float:right;">Start</button>
+                    </div>
+</form>
+
+<!--%%tpl_step_1-->
+
+<!--%tpl_step_2-->
+<h3>Setup MySQL Server Connection</h3>
+<form id="form-step" method="post"><!-- Encase all options in this form -->
+                    
+                    <div id="div-connect">
+                    	<div class="form-group">
+                            <label>Server Address</label>
+                        
+                    		<input name="DB_HOST" class="form-control" type="text" size="25" value="localhost" required/>
+                       </div>
+                        <div class="form-group">     <label>Server Username</label>
+                    		<input name="DB_USER" class="form-control" type="text" size="25" value="root" required/>
+                       </div>
+                        <div class="form-group">     <label>Server Password</label>
+                    		<input name="DB_PASS" class="form-control" type="password" size="25" />
+                    	</div>
+                        <div class="form-group">	<label>Database Name</label>
+                    		<input name="DB_NAME" class="form-control" type="text" size="25" required/>
+                    	</div>
+                        <input name="step" type="hidden" value="2" />
+                    		<input name="nextstep" type="hidden" value="3" />
+                            <button id="stepbtn" class="button btn-sm" style="float:right;">Next</button>
+                    </div>
+</form>
+
+<!--%%tpl_step_2-->
+
+<!--%tpl_step_3-->
+<h2>Install System Files</h2>
+<textarea id=install_log readonly>Click install to start</textarea>
+<form id="form-install" method="post"><!-- Encase all options in this form -->                
+                    <div id="div-connect"> 
+	                    <div class="form-group">
+	              			<input name="step" type="hidden" value="3" />
+	                   	 	<button name="install" id="installbtn" class="button btn-sm" style="float:right;">Install</button>
+	                    </div>
+                    </div>
+</form>
+<form id="form-step" method="get"><!-- Encase all options in this form -->                
+                    <div id="div-connect"> 
+	                    <div class="form-group">
+	              		 <input name="step" type="hidden" value="4" />
+	                   	 <button id="stepbtn" class="button btn-sm" style="float:right;">Next</button>
+	                    </div>
+                    </div>
+</form>
+<script>
+$(document).ready(function(){
+	$("form#form-step button").hide();
+	$("form#form-install button").prepend($(waitnote));
+	$('form#form-install button #wait').hide();
+	$('form#form-install').submit(function(event) {
+		if ( this.checkValidity && !this.checkValidity() ) {
+            $( this ).find( ":invalid" ).first().focus();
+            
+		}
+		else{
+			$('form#form-install button #wait').show();
+	        // process the form
+	        $.ajax({
+	            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+	            data        : $('form#form-install').serialize(), // our data object
+	            dataType    : 'json', // what type of data do we expect back from the server
+	            encode      : true
+	        })
+	            // using the done promise callback
+	            .done(function(data) {
+	            	$('form#form-install button #wait').hide();
+	                // log data to the console so we can see
+	                console.log(data); 
+	
+	                // here we will handle errors and validation messages
+	            });
+		}
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+    });
+});
+var refreshInstall = window.setInterval(function(){
+	
+	$.ajaxSetup({
+	    // Disable caching of AJAX responses
+	    cache: false
+	});
+    $.get('logs/SM_installer.log?',
+        function(data){
+            if(data.indexOf("End Installation")>0)
+            {
+            	clearInterval(refreshInstall);
+            	$("form#form-step button").show();
+            	$("form#form-install").hide();
+            }
+            $('#install_log').val(data);
+            var n = $("#install_log")[0].scrollHeight - $("#install_log").height();
+            $("#install_log").scrollTop(n);
+        }
+    );
+    $.ajaxSetup({
+        // Enabling caching of AJAX responses
+        cache: true
+    });
+},1000);
+</script>
+<!--%%tpl_step_3-->
+
+<!--%tpl_step_4-->
+<h2>Register User Administrator</h2>
+<form id="form-step" method="post">
+	  <div id="div-connect">
+          <div class="form-group">
+	 		<label>Username</label>
+	 		<input type="text" class="form-control" name="username" />
+		 	</div>
+			 <div class="form-group">
+			 	<label>Password</label>
+			 	<input type="password"  class="form-control" name="password" />
+			 </div>
+			 <div class="form-group">
+			 	<label>Email</label>
+			 	<input type="text"  class="form-control" name="email" />
+			 </div>
+	  		 <input name="step" type="hidden" value="4" />
+             <input name="nextstep" type="hidden" value="5" />
+             <button id="stepbtn" class="button btn-sm" style="float:right;">Next</button>
+     </div>
+	</form>
+<!--%%tpl_step_4-->
+
+<!--%tpl_step_5-->
+<h2>Installation Completed</h2>
+<form id="form-end" method="get" action="index.php">
+ <button  id="stepbtn" class="button btn-sm" style="float:right;">Finish</button>
+</form>
+<!--%%tpl_step_5-->

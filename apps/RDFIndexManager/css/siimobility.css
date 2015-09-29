@@ -1,0 +1,330 @@
+@CHARSET "ISO-8859-1";
+
+	td.btnMoreInfo {
+		background: url('../images/details_open.png') no-repeat center center;
+		cursor: pointer;
+	}	
+	
+	#modMoreInfoBody table
+	{
+		table-layout:fixed;
+	}
+	
+	#modMoreInfoBody table td
+	{
+		word-break:break-word;
+	}
+	
+	select.form-control.cboSelectGenerationDate {
+  		max-width: 300px;
+	}
+
+	.input-group.date {
+		width: 130pt;
+	}
+	.input-group.time {
+		width: 90pt;
+	}
+	
+	.delete-icon
+	{
+		width:16px;
+		height:16px;	
+		line-height: 1;
+		display: inline-block;
+		vertical-align: middle;
+		background:no-repeat;
+		background-image:url("../img/delete.png");
+		background-size: 16px 16px;
+	}
+	
+	.edit-icon
+	{
+		width:16px;
+		height:16px;	
+		line-height: 1;
+		display: inline-block;
+		vertical-align: middle;
+		background:no-repeat;
+		background-image:url("../img/edit.png");
+		background-size: 16px 16px;
+	}
+	
+	.xml-icon
+	{
+		width:16px;
+		height:16px;	
+		line-height: 1;
+		display: inline-block;
+		vertical-align: middle;
+		background:no-repeat;
+		background-image:url("../img/XML16.png");
+		background-size: 16px 16px;
+	}
+	
+	.html-icon
+	{
+		width:16px;
+		height:16px;	
+		line-height: 1;
+		display: inline-block;
+		vertical-align: middle;
+		background:no-repeat;
+		background-image:url("../img/html.png");
+		background-size: 16px 16px;
+	}
+	
+	.dataTables_wrapper .dataTables_processing
+	{
+	  color: #000;
+	}
+	
+	div.panel{
+	  margin-bottom: 0px !important;
+	}
+	
+	#SiiMobilityIndexEditor .panel-body nav:first-child
+	{
+		margin-bottom:5px;
+	}
+	
+	#SiiMobilityIndexEditor div.panel-body
+	{
+		padding:5px !important;
+		
+	}
+	
+	#SiiMobilityIndexEditor > div.panel-body
+	{
+	  min-height: 720px;
+	}
+	
+	#SiiMobilityIndexEditor .datetime-group
+	{
+		margin-top:5px;
+		margin-bottom:5px;
+		overflow: auto;
+	}
+	
+	#SiiMobilityIndexEditor .datetime-group .input-group
+	{
+		width:50%;
+		float:left;
+	}
+	
+	#SiiMobilityIndexEditor .shortcut
+	{
+		text-align:center;
+	}
+	
+	
+	#SiiMobilityIndexEditor div#OpenRepository .panel-body {
+		  min-height: 600px;
+		  background-color: white;
+	}
+	
+	#SiiMobilityIndexEditor #welcome	
+	{
+		  background: white;
+		  color: black;
+		  min-height: 600px;
+	}
+	
+	#SiiMobilityIndexEditor #welcome #side-right
+	{
+		float:right;
+		width:66%;
+		padding: 30px;
+	}
+	
+	#SiiMobilityIndexEditor div#welcome #options
+	{
+		padding-top:20px;
+	}
+	
+	#SiiMobilityIndexEditor #welcome #side-left
+	{
+		float:left;
+		width:33%;
+	}
+	
+	#SiiMobilityIndexEditor #NewRepository .form-actions {
+  		text-align: center;
+  		margin: 20px;
+	}
+	
+	#SiiMobilityIndexEditor #rotor
+	{
+		color: black;
+		text-align:center;
+		
+	}
+	
+	.shortcut a	{
+		color:black;
+		text-decoration:none;
+		font-weight:bold;
+	}
+	
+	
+	
+	div.dataTables_wrapper .toolbar{
+		line-height: 2.1;
+  		margin-left: 10px;
+  		display: inline-block;
+	}
+	
+	table.dataTable tr.selected td{
+		background-color: #abb9d3 !important;
+	}
+	
+	table#tableEnrichments tr.locked *, table#tableOntologies tr.locked *, table#tableStaticData tr.locked *, table#tableRealTimeData tr.locked *, table#tableReconciliations tr.locked *
+	{
+		background-color: #fcf8e3;
+	}
+	table#tableSelectedEnrichments tr.locked *, table#tableSelectedOntologies tr.locked *, table#tableSelectedStaticData tr.locked *, table#tableSelectedRealTimeData tr.locked *, table#tableSelectedReconciliations tr.locked *
+	{
+		background-color: #fcf8e3;
+	}
+	
+	
+	table#tableEnrichments tr.cloned.locked *, table#tableOntologies tr.cloned.locked *, table#tableStaticData tr.cloned.locked *, table#tableRealTimeData tr.cloned.locked *, table#tableReconciliations tr.cloned.locked *
+	{
+		background-color: #d9edf7;
+	}
+	table#tableSelectedOntologies tr.cloned.locked *, table#tableSelectedStaticData tr.cloned.locked *, table#tableSelectedRealTimeData tr.cloned.locked *, table#tableSelectedReconciliations tr.cloned.locked *
+	{
+		background-color: #d9edf7;
+	}
+	
+	table#tableEnrichments tr.new *, table#tableOntologies tr.new *, table#tableStaticData tr.new *, table#tableRealTimeData tr.new *, table#tableReconciliations tr.new *
+	{
+		background-color: #dff0d8;
+	}
+	table#tableSelectedEnrichments tr.new *, table#tableSelectedOntologies tr.new *, table#tableSelectedStaticData tr.new *, table#tableSelectedRealTimeData tr.new *, table#tableSelectedReconciliations tr.new *
+	{
+		background-color: #dff0d8;
+	}
+	table.dataTable select, table.dataTable select option
+	{
+		background-color: #fff !important;
+		
+	}
+	
+	.shortcut .icon img {
+		  max-width: 64px !important;
+		  max-height: 64px !important;
+		  height: 100%;
+ 		  width: 100%;
+	}
+	
+	.shortcut div#modBody {
+ 		 word-break: break-word;
+  		 padding: 10px 20px;
+ 		 height: 100px;
+ 		 overflow:hidden;
+ 		 
+	}
+	
+	#rdfstores .shortcut div#modBody {
+ 		 word-break: break-word;
+  		 padding: 0px;
+ 		 height: 100px;
+ 		 overflow:hidden;
+ 		 
+	}
+	
+	.icon-new, .icon-default-repos
+	{
+		background-image:url("../img/edit128.png");	
+	}
+	
+	.icon-import
+	{
+		background-image:url("../img/import.png");	
+	}
+	
+	.icon-open
+	{
+		background-image:url("../img/archive.png");	
+	}
+	
+	#options .row div {
+	  margin: 10px;
+	}
+	
+	div#RepositoryExplorer {
+		  max-height: 720px;
+		  overflow: auto;
+		  margin: -5px;
+	}
+	
+	div#RepositoryExplorer div.row {
+  		margin: 0px;
+	}
+
+	div#RepositoryExplorer div.row div[class*='col-']
+	{
+		margin: 10px 0px;
+	}
+	
+	iframe#helpview
+	{
+		width:100%;
+		height:700px;
+		border:0;
+		/*margin-top:15px;*/
+	}
+	
+	div.helpbar
+	{
+		  margin-bottom: 10px;
+		  color: black;
+		  background-color: whitesmoke;
+		  /* height: 32px; */
+		  line-height: 2;
+		  padding: 5px;
+	}
+	
+	div#legend,div#securityinfo
+	{
+		display:inline-block;
+		margin-right:20px;
+	}
+	
+	div#legend .label-info
+	{
+		background-color:#d9edf7 !important;
+		color: darkslategray;
+	}
+	
+	div#legend .label-warning
+	{
+		background-color:#fcf8e3 !important;
+		color: darkslategray;
+	}
+	
+	div#legend .label-success
+	{
+		background-color:#dff0d8 !important;
+		color: darkslategray;
+	}
+	
+	input.form-control
+	{
+		height: auto;
+	}
+	
+	
+	td.TodaySelection div *:not(input) {
+  		background-color: #eee !important;
+	}
+	
+	td.TodaySelection div * input {
+  		background-color: #fff !important;
+	}
+	
+	.bootstrap-timepicker-widget 
+	{
+		z-index:9999;
+	}

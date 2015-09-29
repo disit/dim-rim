@@ -1,0 +1,42 @@
+<!--%tpl_index-->
+
+
+<!-- Static navbar -->
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="menubar-container">
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+				    <li class="header dropdown">
+				    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">File <b class="caret"></b></a>
+				    	 <ul class="dropdown-menu">
+				    		 <li class="header"><a id="new" href="javascript:void(0)" data-target="#OpenDataEdit" data-toggle="modal" >New...</a></li>
+				    		 <li role="presentation" class="divider"></li>
+							 <li class="header"><a id="close" href=".">Close</a></li>
+						</ul>
+				    </li>
+				
+				    <li class="header dropdown">
+				    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Window <b class="caret"></b></a>
+				    	 <ul class="dropdown-menu">
+							<li class="header"><a name="explorer" href="javascript:void(0)" onclick="OpenDataManager.ShowPanel('explorer')" >Explorer</a></li>
+							<li class="header"><a name="scheduler" href="javascript:void(0)" onclick="OpenDataManager.ShowPanel('scheduler')" >Scheduler</a></li>
+							<li class="header"><a name="repository" href="javascript:void(0)" onclick="OpenDataManager.ShowPanel('repository')" >Repository</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header"><a name="preferences" href="javascript:void(0)" onclick="OpenDataManager.ShowPanel('preferences')">Preferences</a></li>
+						</ul>
+				    </li>
+				    <li class="header ">
+						<a name="help" href="javascript:void(0)" onclick="OpenDataManager.ShowHelp()">Help</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+				    
+ <!-- Container -->
+    <div id="container">
+		<div id="panel" class="panel panel-default" >
+		{panel}		
+		</div>
+	</div>
+<!--%%tpl_index-->

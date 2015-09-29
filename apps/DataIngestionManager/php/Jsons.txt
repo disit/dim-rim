@@ -1,0 +1,6 @@
+Array
+(
+    [json] => {"startAt":"1414080153948","withIdentityNameGroup":["Previ_meteo_Zeri_xml_trig","Previsioni_trig"],"withPriority":"5","repeatForever":"true","withIntervalInSeconds":"14400","storeDurably":"true","requestRecovery":"false","withJobIdentityNameGroup":["Previ_meteo_Zeri_xml","Previsioni"],"id":"scheduleJob","jobClass":"ProcessExecutorJob","jobDataMap":{"#isNonConcurrent":"true","#processParameters":"[\"{\\\"processPath\\\":\\\"\\\\\\\/home\\\\\\\/ubuntu\\\\\\\/programs\\\\\\\/data-integration\\\\\\\/kitchen.sh\\\"}\",\"{\\\"file\\\":\\\"-file=\\\\\\\/media\\\\\\\/Trasformazioni\\\\\\\/TrasformazionePrevisioni_new\\\\\\\/Ingestion\\\\\\\/Main.kjb\\\"}\",\"{\\\"debugLevel\\\":\\\"-level=Basic\\\"}\",\"{\\\"processName\\\":\\\"-param:processName=Previ_meteo_Zeri_xml\\\"}\"]"}}
+)
+
+#processParameters=["{"processPath":"\/home\/ubuntu\/programs\/data-integration\/kitchen.sh"}","{"file":"-file=\/media\/Trasformazioni\/TrasformazionePrevisioni_new\/Ingestion\/Main.kjb"}","{"debugLevel":"-level=Basic"}","{"processName":"-param:processName=Previ_meteo_Zeri_xml"}"];#isNonConcurrent=true

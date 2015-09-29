@@ -1,0 +1,812 @@
+<!--%tpl_indexgenerator-->
+
+	<!-- Static navbar -->
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="menubar-container">
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+				    <li class="header dropdown">
+				    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">File <b class="caret"></b></a>
+				    	 <ul class="dropdown-menu">
+							<li class="header"><a id="new" href="IndexGenerator/New" >New...</a></li>
+							<li class="header"><a id="import" href="IndexGenerator/Import">Import...</a></li>
+							<li class="header"><a id="import" href="IndexGenerator/Open">Open...</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header"><a id="export"href="IndexGenerator/Export/{ID}">Export...</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header"><a id="close"href="IndexGenerator/Editor/Archive">Archive...</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header"><a id="close"href="IndexGenerator/Editor">Close</a></li>
+						</ul>
+				    </li>
+					<li class="header dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit <b class="caret"></b></a>
+		       			 <ul class="dropdown-menu">
+							<li class="header disabled" id="header_step1"><a href="javascript:void(0)">Ontologies</a></li>
+							<li class="header disabled" id="header_step2"><a href="javascript:void(0)">Static data</a></li>
+							<li class="header disabled" id="header_step3"><a href="javascript:void(0)">Real Time data</a></li>
+							<li class="header disabled" id="header_step4"><a href="javascript:void(0)">Reconciliations</a></li>
+							<li class="header disabled" id="header_step5"><a href="javascript:void(0)">Enrichments</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header disabled" id="header_properties"><a id="properties" href="javascript:void(0)" onclick="IndexManager.loadPropertiesPanel('IndexGenerator/Properties/{ID}')" >Properties</a></li>
+						</ul>
+					</li>
+					<li class="header dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Build <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="header disabled" id="header_step6"><a href="javascript:void(0)">Summary</a></li>
+							<li class="header disabled" id="header_validate_index"><a href="javascript:void(0)" onclick="IndexManager.validateIndex('IndexGenerator/Validate/{ID}')">Validate</a></li>
+							<li class="header disabled" id="header_builderPanel"><a id="builderPanel" href="javascript:void(0)"	onclick="IndexManager.loadBuildPanel('IndexGenerator/Editor/Builder/{ID}')">Monitor</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header disabled" id="header_build_script"><a href="javascript:void(0)" onclick="IndexManager.buildScript()">Build Script</a></li>
+							<li class="header disabled" id="header_run_script"><a href="javascript:void(0)"	onclick="IndexManager.runScript('IndexGenerator/Builder/Command/Run_Script/{ID}')">Run Script</a></li>
+							
+						</ul>
+					</li>
+					<li class="header dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="header " id="header_welcome"><a href="javascript:void(0)" onclick="IndexManager.loadWelcomePanel('IndexGenerator/Editor/Welcome')">Welcome</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header" id="header_help"><a href="javascript:void(0)" onclick="IndexManager.loadHelpPanel('IndexGenerator/Editor/Help')">Help Contents</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Container -->
+	<div id="container">
+		<div id="page0" class="step">
+				{introduction}
+		</div>
+		<div id="page1" class="step panel panel-default" style="display:none;">
+			<div class=panel-heading>Ontologies selection</div>
+			<div class=panel-body>
+			<div class=helpbar>
+				<div id="legend">
+					<b>Legend:</b> 
+					<span class="label label-info"><i class="glyphicon glyphicon-lock"></i> Cloned & Committed</span>
+					<span class="label label-warning"><i class="glyphicon glyphicon-lock"></i> Committed</span>
+	  				<span class="label label-success"><b>New</b></span>
+	  			</div>
+	  			<div id=securityinfo>
+	  				<b>Security Level: </b><span class="label label-info">{SecurityLevel}</span>
+	  			</div>
+  			</div>
+			<table id="tableOntologies" class="table table-striped table-bordered showing-generations" width="100%">
+				<thead>
+					<tr>
+						<th rowspan="2">Name</th>
+						<th rowspan="2">URI Prefix</th>
+						<th rowspan="2">Security</th>
+						<th rowspan="2">Path</th>
+						<th rowspan="2">Last file date</th>
+						<th colspan="5">Generations 
+						<button type="button" class="btn btn-success btnNewGenerationColumn" data-toggle="tooltip" data-placement="top" title="Add a new generation column" onclick="addGenerationColumn()">+</button>
+						</th>
+						<th rowspan="2">Today</th>
+						<th rowspan="2">Status</th>
+						
+					</tr>
+					<tr>
+						<th class="thGeneration GenColumn0">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+					 	 	<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+						<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+				  		<th class="thGeneration GenColumn1">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+ 						</th>
+						<th class="thGeneration GenColumn2">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+						<th class="thGeneration GenColumn3">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+						<th class="thGeneration GenColumn4">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+						
+ 					</tr>
+				</thead>
+				
+				<tfoot>
+					<tr>
+						<th>Name</th>
+						<th>URI Prefix</th>
+						<th>Security</th>
+						<th>Path</th>
+						<th>Last file date</th>
+ 						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th>Today</th>
+						<th>Status</th>
+						
+					</tr>
+				</tfoot>
+			</table>
+			
+			<p class="">
+  			<!-- 	<a class="btn btn-lg btn-primary" href="javascript:void(0)" onclick="getStep(0)" role="button">Back</a>  -->
+  				<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(2)" role="button">Next step</a>
+			</p>
+			</div>
+		</div>
+		<div id="page2" class="step panel panel-default" style="display:none;">
+			<div class=panel-heading>Static data selection</div>
+			<div class=panel-body>
+			<div class=helpbar>
+				<div id="legend">
+					<b>Legend:</b> 
+					<span class="label label-info"><i class="glyphicon glyphicon-lock"></i> Cloned & Committed</span>
+					<span class="label label-warning"><i class="glyphicon glyphicon-lock"></i> Committed</span>
+	  				<span class="label label-success"><b>New</b></span>
+	  			</div>
+	  			<div id=securityinfo>
+	  				<b>Security Level: </b><span class="label label-info">{SecurityLevel}</span> 
+	  			</div>
+  			</div>
+  		
+			<table id="tableStaticData" class="table table-striped table-bordered showing-generations" width="100%">
+				<thead>
+					<tr>
+						<th rowspan="2"></th>
+						<th rowspan="2">Process Name</th>
+						<th rowspan="2">Resource</th>
+						<th rowspan="2">Description</th>
+						<th rowspan="2">Security</th>
+						<th rowspan="2">Triples path</th>
+						<th rowspan="2">Last source update</th>
+						<th colspan="5">Generations <button type="button" class="btn btn-success btnNewGenerationColumn" data-toggle="tooltip" data-placement="top" title="Add a new generation column" onclick="addGenerationColumn()">+</button></th>
+						<th rowspan="2">Today</th>
+						<th rowspan="2">Status</th>
+					</tr>
+					<tr>
+						<th class="thGeneration GenColumn0">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+ 						<th class="thGeneration GenColumn1">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+ 						</th>
+						<th class="thGeneration GenColumn2">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+						<th class="thGeneration GenColumn3">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+						<th class="thGeneration GenColumn4">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+ 					</tr>
+				</thead>
+
+				<tfoot>
+					<tr>
+						<th></th>
+						<th>Process Name</th>
+						<th>Resource</th>
+						<th>Description</th>
+						<th>Security</th>
+						<th>Triples path</th>
+						<th>Source date</th>
+						<th></th>
+ 						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</tfoot>
+			</table>
+			
+			<p>
+				<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(1)" role="button">Back</a>
+				<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(3)" role="button">Next step</a>
+			</p>
+			</div>
+		</div>
+		<div id="page3" class="step panel panel-default" style="display:none;">
+			<div class=panel-heading>Real time data selection</div>
+			<div class=panel-body>
+			<div class=helpbar>
+				<div id="legend">
+					<b>Legend:</b> 
+					<span class="label label-info"><i class="glyphicon glyphicon-lock"></i> Cloned & Committed</span>
+					<span class="label label-warning"><i class="glyphicon glyphicon-lock"></i> Committed</span>
+	  				<span class="label label-success"><b>New</b></span>
+	  			</div>
+	  			<div id=securityinfo>
+	  				<b>Security Level: </b><span class="label label-info">{SecurityLevel}</span> 
+	  			</div>
+  			</div>
+			<table id="tableRealTimeData" class="table table-striped table-bordered showing-generations" width="100%">
+				<thead>
+					<tr>
+						<th rowspan="2"></th>
+						<th rowspan="2">Process Name</th>
+						<th rowspan="2">Resource</th>
+						<th rowspan="2">Description</th>
+						<th rowspan="2">Security</th>
+						<th rowspan="2">Triples path</th>
+						<th rowspan="2">Last source update</th>
+						<th colspan="5">Generations <button type="button" class="btn btn-success btnNewGenerationColumn" data-toggle="tooltip" data-placement="top" title="Add a new generation column" onclick="addGenerationColumn()">+</button></th>
+						<th rowspan="2">Today</th>
+						<th rowspan="2">Status</th>
+					</tr>
+					<tr>
+						<th class="thGeneration GenColumn0">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+ 						<th class="thGeneration GenColumn1">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+ 						</th>
+						<th class="thGeneration GenColumn2">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+						<th class="thGeneration GenColumn3">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+						<th class="thGeneration GenColumn4">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+ 					</tr>
+				</thead>
+				
+				<tfoot>
+					<tr>
+						<th></th>
+						<th>Process Name</th>
+						<th>Resource</th>
+						<th>Description</th>
+						<th>Security</th>
+						<th>Triples path</th>
+						<th>Source date</th>
+						<th></th>
+ 						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</tfoot>
+			</table>
+			
+			<p>
+				<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(2)" role="button">Back</a>
+				<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(4)" role="button">Next step</a>
+			</p>
+			</div>
+		</div>
+		<div id="page4" class="step panel panel-default" style="display:none;">
+			<div class=panel-heading>Reconciliation procedures selection</div>
+			<div class=panel-body>
+			<div class=helpbar>
+				<div id="legend">
+					<b>Legend:</b> 
+					<span class="label label-info"><i class="glyphicon glyphicon-lock"></i> Cloned & Committed</span>
+					<span class="label label-warning"><i class="glyphicon glyphicon-lock"></i> Committed</span>
+	  				<span class="label label-success"><b>New</b></span>
+	  			</div>
+	  			<div id=securityinfo>
+	  				<b>Security Level: </b><span class="label label-info">{SecurityLevel}</span> 
+	  			</div>
+  			</div>
+			<table id="tableReconciliations" class="table table-striped table-bordered showing-generations" width="100%">
+				<thead>
+					<tr>
+						<th rowspan="2">Name</th>
+						<th rowspan="2">Macroclasses</th>
+						<th rowspan="2">Triples</th>
+						<th rowspan="2">Description</th>
+						<th rowspan="2">Security</th>
+						<th rowspan="2">Path</th>
+						<th rowspan="2">Last file date</th>
+						<th colspan="5">Generations <button type="button" class="btn btn-success btnNewGenerationColumn" data-toggle="tooltip" data-placement="top" title="Add a new generation column" onclick="addGenerationColumn()">+</button></th>
+						<th rowspan="2">Today</th>
+						<th rowspan="2">Status</th>
+					</tr>
+					<tr>
+						<th class="thGeneration GenColumn0">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+ 						<th class="thGeneration GenColumn1">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+ 						</th>
+						<th class="thGeneration GenColumn2">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+						<th class="thGeneration GenColumn3">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+						<th class="thGeneration GenColumn4">
+							<select size="1" class="form-control cboSelectGenerationDate">
+							</select>
+							<br style="height:10pt;" />&nbsp;<br/>
+							<button type="button" class="btn btn-info btnCloneToday" data-toggle="tooltip" data-placement="top" title="Create a clone of this generation">Clone</button>
+							<button type="button" class="btn btn-info btnCopyToday" data-toggle="tooltip" data-placement="top" title="Use this column as a template for today generation">Copy</button>
+							<button type="button" class="btn btn-danger btnRemove" data-toggle="tooltip" data-placement="top" title="Hide this column">X</button>							
+						</th>
+ 					</tr>
+				</thead>
+				
+				<tfoot>
+					<tr>
+						<th>Name</th>
+						<th>Macroclasses</th>
+						<th>Triples</th>
+						<th>Description</th>
+						<th>Security</th>
+						<th>Path</th>
+						<th>Last file date</th>
+ 						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</tfoot>
+			</table>
+			
+			<p>
+				<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(3)" role="button">Back</a>
+				<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(5)" role="button">Next step</a>
+			</p>
+			</div>
+		</div>
+			<div id="page5" class="step panel panel-default" style="display:none;">
+			<div class=panel-heading>Enrichments selection</div>
+			<div class=panel-body>
+				<div class=helpbar>
+					<div id="legend">
+						<b>Legend:</b> 
+						<span class="label label-info"><i class="glyphicon glyphicon-lock"></i> Cloned & Committed</span>
+						<span class="label label-warning"><i class="glyphicon glyphicon-lock"></i> Committed</span>
+		  				<span class="label label-success"><b>New</b></span>
+		  			</div>
+		  			<div id=securityinfo>
+		  				<b>Security Level: </b><span class="label label-info">{SecurityLevel}</span>  
+		  			</div>
+	  			</div>
+				<table id="tableEnrichments" class="table table-striped table-bordered showing-generations" width="100%">
+					<thead>
+						<tr>
+						    
+							<th >Name</th>
+							<th >Description</th>
+							<th >Query</th>
+							<th >Status</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+						<tfoot>
+						<tr>
+							
+							<th>Name</th>
+							<th>Description</th>
+							<th>Query</th>
+							<th>Status</th>
+							<th>Actions</th>
+						</tr>
+					</tfoot>
+				</table>
+			
+				<p>
+					<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(4)" role="button">Back</a>
+					<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(6)" role="button">Next step</a>
+				</p>
+			</div>
+		</div>	
+		<div id="page6" class="step panel panel-default" style="display:none;">
+			<div class=panel-heading>Choices summary</div>
+			<div class=panel-body>
+			<div class=helpbar>
+				<div id="legend">
+					<b>Legend:</b> 
+					<span class="label label-info"><i class="glyphicon glyphicon-lock"></i> Cloned & Committed</span>
+					<span class="label label-warning"><i class="glyphicon glyphicon-lock"></i> Committed</span>
+	  				<span class="label label-success"><b>New</b></span>
+	  			</div>
+	  			<div id=securityinfo>
+	  				<b>Security Level: </b><span class="label label-info">{SecurityLevel}</span> 
+	  			</div>
+  			</div>
+			<h2>Selected ontologies</h2>
+			<div>
+			<table id="tableSelectedOntologies" class="table table-striped table-bordered" width="100%">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>URI Prefix</th>
+						<th>Security</th>
+						<th>Path</th>
+						<th>Last file date</th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				
+				<tfoot>
+					<tr>
+						<th>Name</th>
+						<th>URI Prefix</th>
+						<th>Security</th>
+						<th>Path</th>
+						<th>Last file date</th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</tfoot>
+			</table>
+			</div>
+			<h2>Selected static data</h2>
+			<div>
+			<table id="tableSelectedStaticData" class="table table-striped table-bordered" width="100%">
+				<thead>
+					<tr>
+						<th>Process Name</th>
+						<th>Resource</th>
+						<th>Description</th>
+						<th>Security</th>
+						<th>Triples path</th>
+						<th>Last source update</th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+
+				<tfoot>
+					<tr>
+						<th>Process Name</th>
+						<th>Resource</th>
+						<th>Description</th>
+						<th>Security</th>
+						<th>Triples path</th>
+						<th>Last source update</th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</tfoot>
+			</table>
+			</div>
+			<h2>Selected real time data</h2>
+			<div>
+			<table id="tableSelectedRealTimeData" class="table table-striped table-bordered" width="100%">
+				<thead>
+					<tr>
+						<th>Process Name</th>
+						<th>Resource</th>
+						<th>Description</th>
+						<th>Security</th>
+						<th>Triples path</th>
+						<th>Last source update</th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				
+				<tfoot>
+					<tr>
+						<th>Process Name</th>
+						<th>Resource</th>
+						<th>Description</th>
+						<th>Security</th>
+						<th>Triples path</th>
+						<th>Source date</th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</tfoot>
+			</table>
+			</div>
+			<h2>Selected reconciliations</h2>
+			<div>
+			<table id="tableSelectedReconciliations" class="table table-striped table-bordered" width="100%">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Macroclasses</th>
+						<th>Triples</th>
+						<th>Description</th>
+						<th>Security</th>
+						<th>Path</th>
+						<th>Last file date</th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				
+				<tfoot>
+					<tr>
+						<th>Name</th>
+						<th>Macroclasses</th>
+						<th>Triples</th>
+						<th>Description</th>
+						<th>Security</th>
+						<th>Path</th>
+						<th>Last file date</th>
+						<th>Today</th>
+						<th>Status</th>
+					</tr>
+				</tfoot>
+			</table>
+			</div>
+			<h2>Selected Enrichments</h2>
+			<div>
+			<table id="tableSelectedEnrichments" class="table table-striped table-bordered showing-generations" width="100%">
+					<thead>
+						<tr>
+							<th >Name</th>
+							<th >Description</th>
+							<th >Query</th>
+							<th >Status</th>
+						</tr>
+					</thead>
+						<tfoot>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Query</th>
+							<th>Status</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<p>
+				<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="getStep(4)" role="button">Back</a>
+				<a class="button light-gray btn-xs btn btn-primary" href="javascript:void(0)" onclick="showConfirmScript()" role="button">Confirm</a>
+			</p>
+		</div>
+		</div>
+		<div id=panels class="step" style="display:none;">
+			<div id="rotor" class="well" style="display: none;"><img src="img/wait.gif">Loading...</div>
+			<div id="content"></div>
+		</div>
+	</div>
+		
+	<!-- Footer -->
+	<div id="footer">
+	</div>
+		
+  
+
+
+
+
+
+	<!-- Modal Show more info on data -->
+	<div class="modal fade" id="modMoreInfo" tabindex="-1" role="dialog" aria-labelledby="modMoreInfo" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="modMoreInfoTitle">More info</h4>
+				</div>
+				<div class="modal-body" id="modMoreInfoBody"></div>
+				<div class="modal-footer">
+					<button type="button" class="button light-gray btn-xs btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal form user insertion -->
+	<div class="modal fade" id="modInsertion" tabindex="-1" role="dialog" aria-labelledby="modInsertion" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modInsertionTitle"></h4>
+				</div>
+				<div class="modal-body" id="modInsertionBody">
+					<span id="modInsertionSpan"></span>
+					<input id="modInsertionInput" type="text" class="form-control" ></input>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-danger danger" id="modInsertionConfirm" data-dismiss="modal">Confirm</a>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+    
+	<!-- Modal form user confirms -->
+	<div class="modal fade" id="modConfirm" tabindex="-1" role="dialog" aria-labelledby="modConfirm" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modConfirmTitle"></h4>
+				</div>
+				<div class="modal-body" id="modConfirmBody"></div>
+				<div class="modal-footer">
+					<a class="btn btn-danger danger" id="modConfirmOK" data-dismiss="modal">Yes</a>
+					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+    
+	<!-- Modal form user alerts -->
+	<div class="modal fade" id="modAlert" tabindex="-1" role="dialog" aria-labelledby="modAlert" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modAlertTitle"></h4>
+				</div>
+				<div class="modal-body" id="modAlertBody"></div>
+				<div class="modal-footer">
+					<a class="btn btn-warning warning" id="modAlertOK" data-dismiss="modal">OK</a>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+<!--%%tpl_indexgenerator-->
+
+<!--%tpl_indexgenerator_welcome-->
+
+	<!-- Static navbar -->
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="menubar-container">
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+				   <li class="header dropdown">
+				    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">File <b class="caret"></b></a>
+				    	 <ul class="dropdown-menu">
+							<li class="header"><a id="new" href="IndexGenerator/New" >New...</a></li>
+							<li class="header"><a id="import" href="IndexGenerator/Import">Import...</a></li>
+							<li class="header"><a id="import" href="IndexGenerator/Open">Open...</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header"><a id="close"href="IndexGenerator/Editor/Archive">Archive...</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header disabled"><a id="export"href="IndexGenerator/Export">Export...</a></li>
+						</ul>
+				    </li>
+					<li class="header dropdown">
+						<a href="#" class="dropdown-toggle " data-toggle="dropdown">Edit <b class="caret"></b></a>
+		       			 <ul class="dropdown-menu">
+							<li class="header disabled" id="header_step1"><a href="javascript:void(0)">Ontologies</a></li>
+							<li class="header disabled" id="header_step2"><a href="javascript:void(0)">Static data</a></li>
+							<li class="header disabled" id="header_step3"><a href="javascript:void(0)">Real Time data</a></li>
+							<li class="header disabled" id="header_step4"><a href="javascript:void(0)">Reconciliations</a></li>
+							<li class="header disabled" id="header_step5"><a href="javascript:void(0)">Enrichments</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header disabled" id="header_properties"><a id="properties" href="javascript:void(0)" >Properties</a></li>
+						</ul>
+					</li>
+					
+					<li class="header dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Build <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="header disabled" id="header_step6"><a href="javascript:void(0)">Summary</a></li>
+							<li class="header disabled" id="header_run_status"><a href="javascript:void(0)">Monitor</a></li>	
+							<li class="header disabled" id="header_validate_index"><a href="javascript:void(0)">Validate</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header disabled" id="header_build_script"><a href="javascript:void(0)">Build Script</a></li>
+							<li class="header disabled" id="header_run_script"><a href="javascript:void(0)">Run Script</a></li>
+							
+						</ul>
+					</li>
+
+					<li class="header dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="header " id="header_welcome"><a href="javascript:void(0)" onclick="IndexManager.loadWelcomePanel('IndexGenerator/Editor/Welcome')">Welcome</a></li>
+							<li role="presentation" class="divider"></li>
+							<li class="header" id="header_help"><a href="javascript:void(0)" onclick="IndexManager.loadHelpPanel('IndexGenerator/Editor/Help')">Help Contents</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Container -->
+	<div id="container">
+		<div id="page0" class="step">
+				{introduction}
+		</div>
+		<div id="panels" class="step" style="display:none;">
+			<div id="rotor" class="well" style="display: none;"><img src="img/wait.gif">Loading...</div>
+			<div id="content"></div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<div id="footer">
+	</div>
+<!--%%tpl_indexgenerator_welcome-->

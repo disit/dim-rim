@@ -1,0 +1,45 @@
+<?php
+//The plugin folder
+global $pluginPath;
+//The classPath folder
+global $classPath;
+//MySql Host
+$dbHost="DB_HOST";
+//MySql User
+$dbUser="DB_USER";
+//MySql Pwd
+$dbPwd="DB_PASS";
+//MySql Db Name
+$dbName="DB_NAME";
+//Base Url
+$baseUrl="/rim/";
+//Base Dir
+$baseDir="/rim/";
+//Class folder path for system modules
+$classPath['system']="system/";
+//Class folder path for apps/addons modules
+$classPath['apps']="apps/*/";
+//Class folder path for addons plugins
+$pluginPath['system']="plugins/";
+$pluginPath['apps']="apps/*/plugins/";
+//Class folder path for libs
+$libPath[]="lib/";
+//Class folder path for libs/PFCB
+$libPath[]="lib/PFBC/";
+//Class folder path for libs/XSLT
+$libPath[]="lib/XSLT/";
+//Class folders structures for classPath
+//Class folder path for views
+$classPathStructure["views"]="views/";
+//Class folder path for controllers
+$classPathStructure["controllers"]="controllers/";
+//Class folder path for models
+$classPathStructure["models"]="models/";
+//Class folder path for includes
+$classPathStructure["includes"]="includes/";
+//Class folder path for observers
+$classPathStructure["observers"]="observers/";
+//Class folder path for ui element
+$classPathStructure["ui"]="ui/";
+//Class folder path for root
+$classPathStructure["root"]="/";

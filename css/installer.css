@@ -1,0 +1,57 @@
+@CHARSET "ISO-8859-1";
+#installer .left{
+	  
+  width: 24%;
+  height: 430px;
+  display: inline-block;
+  background-size: 90%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+   background-color: white;
+  border: 1px solid #aaa;
+}
+
+#installer .right{
+  width: 75%;
+  float: right;
+  display: inline-block;
+  margin:0px;
+  padding:5px 10px;
+  height: 430px;
+}
+
+#installer .pic_step_2{
+	background-image: url(../img/mysql_backup.png);
+}
+
+#installer .pic_step_3{
+	background-image: url(../img/install.png);
+}
+
+#installer .pic_step_4{
+	background-image: url(../img/admin_face.png);
+}
+
+#installer .pic_step_5{
+	background-image: url(../img/completed.png);
+}
+
+#installer textarea#install_log
+{
+	width: 100%;
+  height: 300px;
+   resize: none;
+}
+
+#installer #wait{
+	width:16px;
+	vertical-align:text-bottom;
+}
+
+#installer li.active span.badge{
+	  background-color: darkcyan;
+}
+
+#installer li.active{
+	color:darkcyan;
+}

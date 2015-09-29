@@ -1,0 +1,63 @@
+@CHARSET "ISO-8859-1";
+
+.logo
+{
+	background-image: url("../img/rdfstore192.png");
+	background-size: 32px 32px;
+	width: 32px;
+	height: 32px;
+	vertical-align: middle;
+	display: inline-block;
+	background-repeat: no-repeat;
+	margin-right: 5px;
+	background-position: center;
+}
+
+#access #logo
+{
+	  font-size: 32px;
+	  color: #2C2C2C;
+	  text-shadow: 2px 2px 2px #aaa;
+	  height: 240px;
+	  background-image: url(../img/rdfstore192.png);
+	  background-position: center 50px;
+	  background-repeat: no-repeat;
+	  background-size: 192px 192px;
+	  margin-top: 15px;
+}
+
+.icon-app
+{
+	background-image:url("../img/rdfstore192.png");	
+}
+.navbar-header a.navbar-brand
+{
+	  padding: 9px 15px;
+}
+
+@media(max-width:400px)
+{
+	.logo
+	{
+		background-image: url("../img/rdfstore192.png");
+		background-size: 36px 36px;
+		width: 36px;
+		height: 36px;
+		vertical-align: middle;
+		display: inline-block;
+		background-repeat: no-repeat;
+		margin-right: 5px;
+		background-position: center center;
+	}
+	
+	.navbar-header a.navbar-brand {
+		padding: 8px;
+	}
+	#access #logo
+	{
+		font-size: 26px;
+		
+	}
+	
+}
+}

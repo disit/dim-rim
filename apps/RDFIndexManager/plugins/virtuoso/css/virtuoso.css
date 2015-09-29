@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+iframe#owlim_tool_view
+{
+	width:100%;
+	height:800px;
+	border:0;
+	margin-top:15px;
+}
+
+.icon-virtuoso
+{
+	background-image:url("../img/logo.gif") !important;	
+}

@@ -1,0 +1,727 @@
+<!--%tpl_explorer-->
+
+<div class=panel-body>
+        <div class="">
+         	<span class=col-md-offset-2><b>Processing: </b></span>
+            <button class="btn btn-success btn-sm" onclick="scheduleProcess()">
+                    <span>Execute</span>
+            </button>
+           <!--  <button class="btn btn-danger btn-sm" onclick="deleteProcess()"> -->
+            <button class="btn btn-danger btn-sm" data-target="#deleteFromScheduler" data-toggle="modal">
+                <span>Delete</span>
+            </button>
+          <!--    <button class="btn btn-warning btn-sm" onclick="pauseProcess()"> -->
+            <button class="btn btn-warning btn-sm" data-target="#pauseJob" data-toggle="modal"> 
+                <span>Pause</span>
+            </button>
+          <!-- <button class="btn btn-info btn-sm" onclick="resumeProcess()"> -->
+            <button class="btn btn-info btn-sm" data-target="#resumeJob" data-toggle="modal">
+                <span>Resume</span>
+            </button>
+            <span class=col-md-offset-1><b>Data:</b></span>
+            <button type="button" class="btn  btn-primary btn-sm" data-target="#OpenDataEdit" data-toggle="modal" data-whatever="@mdo">
+                <span>Add New</span>
+            </button>
+            <button type="button" class="btn btn-sm btn-danger" data-target="#deleteConfirm" data-toggle="modal">
+                <span>Delete</span>
+            </button>
+            <button type="button" style="background:#8BC387" class="btn btn-sm" data-target="#enableConfirm" data-toggle="modal">
+                <span>Enable Processing</span>
+            </button>
+            <button type="button" style="background:#D65CAD" class="btn btn-sm" data-target="#disableConfirm" data-toggle="modal">
+                <span>Disable Processing</span>
+            </button>
+
+        </div>
+        <div id="OpenDataTableContainer">
+        <table name="processManager" id="processManager" class="table table-bordered display" width="100%">
+            <thead>
+            	<tr>
+            	<th>Edit</th>
+            	<th colspan="2">Scheduler</th>
+            	<th colspan="11">Description</th>
+            	<th colspan="5" style="background:#FF9966">Ingestion</th>
+            	<th colspan="4" style="background:#A1D8A1">Quality improvemet</th>
+            	<th colspan="5" style="background:#CFE68A">Triples generation</th>
+            	<th colspan="5" style="background:#C4CFE6">Validation</th>
+            	<th colspan="5" style="background:#FFB8B8">Reconciliation</th>
+            	<th colspan="5">General</th>
+            	</tr>
+                <tr>
+                <th>Actions</th>
+                    <th>Launch</th>
+                    <th><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxA')" class="form-control"/>I</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxB')" class="form-control"/>QI</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxC')" class="form-control"/>T</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxD')" class="form-control"/>V</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxE')" class="form-control"/>R</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxConcat')" class="form-control"/>Concatenate</label></th>
+                    <th>Data Name</th>
+                    <th>Resource</th>
+                    <th>Resource Class</th>
+                    <th>Category</th>
+                    <th>Format</th>
+                    <th>Automaticity</th>
+                    <th>Process_type</th>
+                    <th>Access</th>
+                    <th>Real Time</th>
+                    <th>Source</th>
+                    <th>Security</th>
+                    <th>I path</th>
+                    <th>Ing status</th>
+                    <th>Ing time</th>
+                    <th>last_update</th>
+                    <th>Ing Error</th>
+                    <th>QI path</th>
+                    <th>QI status</th>
+                    <th>QI time</th>
+                    <th>QI Error</th>
+                    <th>T path</th>
+                    <th>T status</th>
+                    <th>T time</th>
+                    <th>Last triples date</th>
+                    <th>T Error</th>
+                    <th>V path</th>
+                    <th>V status</th>
+                    <th>V time</th>
+                    <th>Triples Count</th>
+                    <th>V Error</th>
+                    <th>R path</th>
+                    <th>R status</th>
+                    <th>R time</th>
+                    <th>Triples Count Rep</th>
+                    <th>R Error</th>
+                    <th>period</th>
+                    <th>overtime</th>
+                    <th>param</th>
+                    <th>error</th>
+                    <th>description</th>
+                </tr>
+            </thead>
+                     
+<!--            <tfoot>
+                <tr>
+                    <th>Launch</th>
+                    <th><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxA')" class="form-control"/>I</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxB')" class="form-control"/>QI</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxC')" class="form-control"/>T</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxD')" class="form-control"/>V</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxE')" class="form-control"/>R</label><label><input type="checkbox" onclick="toggleAllCheckBoxes('form-control', 'checkBoxConcat')" class="form-control"/>Concatenate</label></th>
+                    <th>Open Data Name</th>
+                    <th>Resource</th>
+                    <th>Resource Class</th>
+                    <th>Category</th>
+                    <th>Format</th>
+                    <th>Automaticity</th>
+                    <th>Process_type</th>
+                    <th>Access</th>
+                    <th>Real Time</th>
+                    <th>Source</th>
+                    <th>I path</th>
+                    <th>Ing status</th>
+                    <th>Ing time</th>
+                    <th>last_update</th>
+                    <th>Ing Error</th>
+                    <th>QI path</th>
+                    <th>QI status</th>
+                    <th>QI time</th>
+                    <th>QI Error</th>
+                    <th>T path</th>
+                    <th>T status</th>
+                    <th>T time</th>
+                    <th>last triples date</th>
+                    <th>T Error</th>
+                    <th>V path</th>
+                    <th>V status</th>
+                    <th>V time</th>
+                    <th>Triples Count</th>
+                    <th>V Error</th>
+                    <th>R path</th>
+                    <th>R status</th>
+                    <th>R time</th>
+                    <th>Triples Count Rep</th>
+                    <th>R Error</th>
+                    <th>period</th>
+                    <th>overtime</th>
+                    <th>param</th>
+                    <th>error</th>
+                    <th>description</th>
+                </tr>
+            </tfoot>  --> 
+            <tfoot></tfoot>
+        </table>
+       </div>
+</div>
+<!-- Questo modal apre un popup quando viene premuto il tasto Add row. Il popup contiene una serie di elementi input
+sui quali è possibile scrivere il contenuto delle varie celle -->
+<div class="modal fade" id="OpenDataEdit" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="OpenDataEditLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:1000px;">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="OpenDataEditLabel">Edit Data</h4>
+      </div>
+      <div class="modal-body">
+      <h4>Data Properties</h4>
+     
+      <p><small>Fields marked with (*) are mandatory</small></p>
+      <div id=validationResult class="alert alert-danger" style="display:none;" role="alert">
+            	<h4>Please fill the missing Data</h4>
+            	<ul class="errorMessages"></ul>
+      </div>
+      <form role="form" id="addRowForm">
+           
+          	<ul class="nav nav-tabs ">
+				<li class="active"><a href="#description" data-toggle="tab" class="button  btn-sm">Description</a></li>
+				<li class=""><a href="#Ingestion" data-toggle="tab" class="button  btn-sm">Ingestion</a></li>
+				<li class=""><a href="#QI" data-toggle="tab" class="button  btn-sm">Quality Improvement</a></li>
+				<li class=""><a href="#Triples" data-toggle="tab" class="button  btn-sm">Triples Geneneration</a></li>
+				<li class=""><a href="#Validation" data-toggle="tab" class="button  btn-sm">Validation</a></li>
+				<li class=""><a href="#Reconciliation" data-toggle="tab" class="button  btn-sm">Reconciliation</a></li>
+				<li class=""><a href="#General" data-toggle="tab" class="button  btn-sm">General</a></li>
+				<li class=""><a href="#License" data-toggle="tab" class="button  btn-sm">License</a></li>
+			</ul>
+		<div class=tab-content>
+		 <div class="panel-body tab-pane active" id=description>
+			 <div class="form-group">
+			 	 <label for="Process">Data Name (*)</label>
+	            <input id="Process" name="process" placeholder="Name" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+		    <div class="form-group">
+		     	<label for="Resource">Resource Name (*)</label>
+				<input id="Resource" name="Resource" placeholder="Resource" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+			
+		     <div class="form-group">
+		     <label for="ResourceClass">Resource Class (*)</label>
+		     <input id="ResourceClass" name="Resource_Class" placeholder="Resource class" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group">
+		      <label for="Category">Category (*)</label>
+		      <input id="Category" name="Category" placeholder="Category" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group">
+		      <label for="Source">Source (*)</label>
+		      <input id="Source" name="Source" placeholder="Source" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group">
+		      <label for="Format">Format (*)</label>
+		     <select id="Format" name="Format" placeholder="Format"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Format</option>
+			<option value=csv>csv</option>
+			<option value=xls>xls</option>
+			<option value=json>json</option>
+			<option value=kmz>kmz</option>
+			<option value=shp>shp</option>
+			<option value=xml>xml</option>
+			<option value=pdf>pdf</option>
+			<option value=rdf>rdf</option>
+			<option value=sparql>sparql</option>
+			<option value=kml>kml</option>
+			<option value="grid esri">grid esri</option>
+			<option value="sql">sql</option>
+			<option value="other">other</option>
+			</select>
+			</div>
+		     <div class="form-group">
+		      <label for="Automaticity">Automaticity (*)</label>
+		      <select id="Automaticity" name="Automaticity" placeholder="Automaticity"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Automaticity</option>
+			<option value=manual>Manual</option>
+			<option value=automatic>Automatic</option>
+			</select>
+			</div>
+		     <div class="form-group">
+		      <label for="ProcessType">Processing Type (*)</label>
+		      <select id="ProcessType" name="Process_type" placeholder="Process type"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Process type</option>
+			<option value=ETL>ETL</option>
+			<option value=Other>Other</option>
+			</select>
+			</div>
+		     <div class="form-group">
+		      <label for="Access">Access (*)</label>
+		     <select id="Access" name="Access" placeholder="Access"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Access</option>
+			<option value=HTTP>HTTP</option>
+			<option value=WebService>WebService</option>
+			<option value=Script>Script</option>
+			<option value="Manual Request">Manual Request</option>
+			<option value=Access>Access</option>
+			<option value=Other>Other</option>
+			</select>
+			</div>
+		     <div class="form-group">
+		     <label for="RealTime">RealTime (*)</label>
+		     <select id="RealTime" name="Real_time" placeholder="Real time"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Real time</option>
+			<option value=yes>Yes</option>
+			<option value=no>No</option>
+			</select>
+			</div>
+			 <div class="form-group">
+		     <label for="SecurityLevel">Security Level (*)</label>
+		     <select id="SecurityLevel" name="SecurityLevel" placeholder="Security Level"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Security Level</option>
+			<option value=1>OPEN</option>
+			<option value=2>PRIVATE</option>
+			<option value=3>SENSIBLE</option>
+			<option value=4>CRITICAL</option>
+			</select>
+			</div>
+		</div>
+		<div class="tab-pane panel-body" id=Ingestion>
+		    <div class="form-group">	
+		    <label for="IngPath">Ingestion Path (*)</label>
+		    <input id="IngPath" name="A" placeholder="Ing path" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control" required="required">
+			</div>
+		    <div class="form-group">
+		    <label for="IngStatus">Ingestion Status</label>
+		    <input id="IngStatus" name="status_A" placeholder="Ing status" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control">
+			</div>
+		    <div class="form-group">
+		    <label for="IngTime">Ingestion Time</label>
+		    <input id="IngTime" name="time_A" placeholder="Ing time" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control">
+			</div>
+		    <div class="form-group">
+		    <label for="LastUpdate">Ingestion Last Update</label>
+		    <input id="LastUpdate" name="last_update" placeholder="Last update" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control">
+			</div>
+		    <div class="form-group">
+		    <label for="IngError">Ingestion Last Error</label>
+		    <input id="IngError" name="error_A" placeholder="IngError" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control">
+			</div>
+		</div>
+		<div class="tab-pane panel-body" id=QI>	
+			
+		    <div class="form-group">
+		    <label for="QIPath">Quality Improvement Path</label>
+		    <input id="QIPath" name="B" placeholder="QI path" type="text" style="background:#B3F0B3" data-tab="QI" class="processRow form-control" >
+			</div>
+		    
+		    <div class="form-group">
+		    <label for="QIStatus">Quality Improvement Status</label>
+		    <input id="QIStatus" name="status_B" placeholder="QI status" type="text" style="background:#B3F0B3" data-tab="QI" class="processRow form-control">
+			</div>
+		    <div class="form-group">
+		    <label for="QITime">Quality Improvement Time</label>
+		    <input id="QITime" name="time_B" placeholder="QI time" type="text" style="background:#B3F0B3" data-tab="QI" class="processRow form-control">
+			
+			</div>
+		    <div class="form-group">
+		    <label for="QIError">Quality Improvement Last Error</label>
+		    <input id="QIError" name="error_B" placeholder="QI error" type="text" style="background:#B3F0B3" data-tab="QI" class="processRow form-control">
+			</div>
+		</div>
+		<div class="tab-pane panel-body" id=Triples>	
+			
+		    <div class="form-group">
+		    <label for="TPath">Triplication Path (*)</label>
+		    <input id="TPath" name="C" placeholder="T path" type="text" style="background:#E6FF99" data-tab="Triples" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group">
+		     <label for="TStatus">Triplication Status</label>
+		     <input id="TStatus" name="status_C" placeholder="T status" type="text" style="background:#E6FF99" data-tab="Triples" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		     <label for="TTime">Triplication Time</label>
+		     <input id="TTime" name="time_C" placeholder="T time" type="text" style="background:#E6FF99" data-tab="Triples" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		     <input id="LastTriplesDate" name="last_triples" placeholder="Last triples date" type="hidden" style="background:#E6FF99" data-tab="Triples" class="processRow form-control" value="1970-01-01T01:00:00.000">
+			</div>
+		     <div class="form-group">
+		     <label for="TError">Triplication Last Error</label>
+		     <input id="TError" name="error_C" placeholder="T error" type="text" style="background:#E6FF99" data-tab="Triples" class="processRow form-control">
+			</div>
+		</div>
+		<div class="tab-pane panel-body" id=Validation>	
+			
+		     <div class="form-group">
+		      <label for="VPath">Validation Path</label>
+		     <input id="VPath" name="D" placeholder="V path" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		      <label for="VStatus">Validation Path</label>
+		     <input id="VStatus" name="status_D" placeholder="V status" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		      <label for="VTime">Validation Time</label>
+		     <input id="VTime" name="time_D" placeholder="V time" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		      <label for="TriplesCount">Validation Triples Generated</label>
+		     <input id="TriplesCount" name="Triples_count" placeholder="Triples count" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		      <label for="VError">Validation Last Error</label>
+		     <input id="VError" name="error_D" placeholder="V error" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		</div>
+		<div class="form-group tab-pane panel-body" id=Reconciliation>	
+		     <div class="form-group">
+		     <label for="RPath">Reconciliation Path</label>
+		     <input id="RPath" name="E" placeholder="R path" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		     <label for="RStatus">Reconciliation Status</label>
+		     <input id="RStatus" name="status_E" placeholder="R staus" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		     <label for="RTime">Reconciliation Time</label>
+		     <input id="RTime" name="time_E" placeholder="R time" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		     <label for="TriplesCountRep">Reconciliation Triples</label>
+		     <input id="TriplesCountRep" name="Triples_countRepository" placeholder="Triples count rep" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		     <div class="form-group">
+		     <label for="RError">Reconciliation last Error</label>
+		     <input id="RError" name="error_E" placeholder="R error" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		</div>	
+		<div class="form-group tab-pane panel-body" id=General>	
+          	
+		     <div class="form-group">
+		     <label for="Period">Period (*)</label>
+		     <input id="Period" name="period" placeholder="Period " type="text" data-tab="General" class="processRow form-control" required="required">
+          	</div>
+		     <div class="form-group">
+		     <label for="Overtime">Overtime (*)</label>
+		     <input id="Overtime" name="period" placeholder="Overtime" type="text" data-tab="General" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group">
+		     <label for="Param">Parameters (*)</label>
+		     <input id="Param" name="param" placeholder="Param" type="text" data-tab="General" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group">
+		     <label for="Description">Description</label>
+		     <input id="Description" name="description" placeholder="Description" type="text" data-tab="General" class="processRow form-control">
+			</div>
+		</div>
+		<div class="form-group tab-pane panel-body" id=License>
+		    <div class="form-group">	
+		    <label for="LicenseUrl">License Url</label>
+		    <input id="LicenseUrl" name="LicenseUrl" placeholder="License Url" type="text"  data-tab="License" class="processRow form-control">
+			</div>
+		 	<div class="form-group">	
+		    	<label for="LicenseText">License Text Editor</label>
+		    	{LicenseTextEditor} 
+		    </div>
+		</div>
+        </div>
+          <input type=submit class=hidden id=save>
+        </form>
+      </div>
+      <div class="modal-footer">
+      <!-- Se viene premuto il tasto "Save" viene lanciata la funzione addRow(), presente nel file pageManager.js-->
+        <button type="button" class="btn btn-default button" data-dismiss="modal">Close</button>
+        <button type="button" class="btn light-gray button" onclick="addRow()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Questo modal apre un popup quando viene premuto il tasto Edit di OD. Il popup carica la form di editing. -->
+<div class="modal fade" id="ODEditDlg" data-backdrop="static" data-keyboard="false" aria-labelledby="ODEditDlgLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Edit Open Data</h4>
+      </div>
+      <div class="modal-body">
+       
+      </div>
+      <div class="modal-footer">
+      <!-- Se viene premuto il tasto "Save row" viene lanciata la funzione removeRow(), presente nel file pageManager.js-->
+        <button type="button" class="btn btn-default button" data-dismiss="modal">Close</button>
+        <button type="button" class="btn light-gray button" onclick="updateRow()" data-dismiss="modal">Yes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Questo modal apre un popup quando viene premuto il tasto Remove row. Il popup chiede la conferma di eliminazione della riga.
+La riga viene eliminata dalla tabelle HTML ma non dal database (SiiMobility.processManager) -->
+<div class="modal fade" id="enableConfirm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Enabling Process</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to enable processing for these rows?</p>
+        <p id=rowlist></p>
+      </div>
+      <div class="modal-footer">
+      <!-- Se viene premuto il tasto "Save row" viene lanciata la funzione removeRow(), presente nel file pageManager.js-->
+        <button type="button" class="btn btn-default button" data-dismiss="modal">No</button>
+        <button type="button" class="btn light-gray button" onclick="enableRow()" data-dismiss="modal">Yes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Questo modal apre un popup quando viene premuto il tasto Remove row. Il popup chiede la conferma di eliminazione della riga.
+La riga viene eliminata dalla tabelle HTML ma non dal database (SiiMobility.processManager) -->
+<div class="modal fade" id="disableConfirm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Disabling Process</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to disable processing for these rows?</p>
+        <p id=rowlist></p>
+      </div>
+      <div class="modal-footer">
+      <!-- Se viene premuto il tasto "Save row" viene lanciata la funzione removeRow(), presente nel file pageManager.js-->
+        <button type="button" class="btn btn-default button" data-dismiss="modal">No</button>
+        <button type="button" class="btn light-gray button" onclick="disableRow()" data-dismiss="modal">Yes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Questo modal apre un popup quando viene premuto il tasto Delete row. Il popup chiede la conferma di eliminazione della riga.
+La riga viene eliminata dalla tabelle HTML e dal database (SiiMobility.processManager) -->
+<div class="modal fade" id="deleteConfirm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Delete Open Data</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to remove these Open Data?</p>
+        <p id=rowlist></p>
+      </div>
+      <div class="modal-footer">
+      <!-- Se viene premuto il tasto "Yes" viene lanciata la funzione deleteOpenData(), presente nel file pageManager.js-->
+        <button type="button" class="btn btn-default button" data-dismiss="modal">No</button>
+        <button type="button" class="btn light-gray button" onclick="deleteOpenData()" data-dismiss="modal">Yes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- Questo modal apre un popup quando viene premuto il tasto Delete. Il popup chiede la conferma di eliminazione della processo dallo scheduler.
+Se viene data conferma di eliminazione del processo dallo scheduler, tramite il tasto "Save changes", i processi selezionati dai check vengono eliminati
+definitivamente dallo scheduler-->
+<div class="modal fade" id="deleteFromScheduler">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Delete from scheduler</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to remove these jobs ?</p>
+      </div>
+      <div class="modal-footer">
+      <!-- Se viene premuto il tasto "Save row" viene lanciata la funzione deleteProcess(), presente nel file pageManager.js-->
+        <button type="button" class="btn btn-default button" data-dismiss="modal">No</button>
+        <button type="button" class="btn light-gray button" onclick="deleteProcess()" data-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Questo modal apre un popup quando viene premuto il tasto Pause. Il popup chiede la conferma di pausa della processo dallo scheduler.
+Se viene data conferma relativa alla pausa del processo dallo scheduler, tramite il tasto "Save changes", i processi selezionati dai check vengono messi
+in pausa definitivamente dallo scheduler-->
+<div class="modal fade" id="pauseJob">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Pause Jobs</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to pause these jobs ?</p>
+      </div>
+      <div class="modal-footer">
+      <!-- Se viene premuto il tasto "Save row" viene lanciata la funzione pauseProcess(), presente nel file pageManager.js-->
+        <button type="button" class="btn btn-default button" data-dismiss="modal">No</button>
+        <button type="button" class="btn light-gray button" onclick="pauseProcess()" data-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Questo modal apre un popup quando viene premuto il tasto Pause. Il popup chiede la conferma di pausa della processo dallo scheduler.
+Se viene data conferma relativa alla pausa del processo dallo scheduler, tramite il tasto "Save changes", i processi selezionati dai check vengono messi
+in pausa definitivamente dallo scheduler-->
+<div class="modal fade" id="resumeJob">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Resume Jobs</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to resume these jobs ?</p>
+      </div>
+      <div class="modal-footer">
+      <!-- Se viene premuto il tasto "Save row" viene lanciata la funzione pauseProcess(), presente nel file pageManager.js-->
+        <button type="button" class="btn btn-default button" data-dismiss="modal">No</button>
+        <button type="button" class="btn light-gray button" onclick="resumeProcess()" data-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Questo modal apre un popup che da conferma dell'avvenuta messa in pausa dei processi selezionati. Questo popup viene aperto solo se l'operazione
+di messa in pausa dei processi è avvenuta con successo. Di fatto questo popup dovrebbe comparire dopo la pressione del tasto "Save changes" nel popup
+relativo alla pausa dei processi (il popup con id="pauseJob"). Il comando vero e proprio che apre questo popup è contenuto all'interno della 
+funzione ajaxCommand(), nel file pageManager.js-->
+<div class="modal fade" id="pauseProcess">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Pause Jobs</h4>
+      </div>
+      <div class="modal-body">
+        <p class=message>Jobs paused successfully</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn light-gray button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modMoreInfo" tabindex="-1" role="dialog" aria-labelledby="modMoreInfo" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="modMoreInfoTitle">More info</h4>
+            </div>
+            <div class="modal-body" id="modMoreInfoBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn light-gray button" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Questo modal apre un popup che da conferma dell'avvenuta rimozione delle righe selezionate. Questo popup viene aperto solo se l'operazione
+di rimozione delle righe è avvenuta con successo. Di fatto questo popup dovrebbe comparire dopo la pressione del tasto "Save changes" nel popup
+relativo alla rimozione delle righe (il popup con id="modConfirm"). Il comando vero e proprio che apre questo popup è contenuto all'interno della 
+funzione ajaxCommand(), nel file pageManager.js -->
+<div class="modal fade" id="removeRow">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Remove Rows</h4>
+      </div>
+      <div class="modal-body">
+        <p class=message>Rows removed successfully</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn light-gray button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Questo modal apre un popup che da conferma o meno dell'avvenuto inserimento della nuova riga. Di fatto questo popup dovrebbe comparire dopo la pressione del tasto "Save changes" nel popup
+relativo alla rimozione delle righe (il popup con id="modConfirm"). Il comando vero e proprio che apre questo popup è contenuto all'interno della 
+funzione ajaxCommand(), nel file pageManager.js -->
+<div class="modal fade" id="addRow">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Add Row</h4>
+      </div>
+      <div class="modal-body">
+        <p class=message>Row added successfully</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn light-gray button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Questo modal apre un popup che da conferma dell'avvenuta rimozione dei processi selezionati. Questo popup viene aperto solo se l'operazione
+di rimozione dei processi è avvenuta con successo. Di fatto questo popup dovrebbe comparire dopo la pressione del tasto "Save changes" nel popup
+relativo alla rimozione dei processi (il popup con id="deleteFromScheduler"). Il comando vero e proprio che apre questo popup è contenuto all'interno della 
+funzione ajaxCommand(), nel file pageManager.js -->
+<div class="modal fade" id="deleteProcess">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Remove jobs from scheduler</h4>
+      </div>
+      <div class="modal-body">
+        <p class=message>Jobs removed from scheduler successfully</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn light-gray button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Questo modal apre un popup che da conferma dell'avvenuta schedulazione dei processi selezionati. Questo popup viene aperto solo se l'operazione
+di schedulazione dei processi è avvenuta con successo. Il comando vero e proprio che apre questo popup è contenuto all'interno della 
+funzione ajaxCommand(), nel file pageManager.js -->
+<div class="modal fade" id="scheduleProcess">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Schedule jobs</h4>
+      </div>
+      <div class="modal-body">
+        <p class=message>Jobs scheduled successfully</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn light-gray button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="alertDlg">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p class=message></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn light-gray button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Questo modal apre un popup che da conferma dell'avvenuta riesumazione dei processi selezionati. Questo popup viene aperto solo se l'operazione
+di riesumazione dei processi è avvenuta con successo. Il comando vero e proprio che apre questo popup è contenuto all'interno della 
+funzione ajaxCommand(), nel file pageManager.js -->
+<div class="modal fade" id="resumeProcess">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Resume jobs</h4>
+      </div>
+      <div class="modal-body">
+        <p class=message>Jobs resumed successfully</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn light-gray button" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--%%tpl_explorer-->

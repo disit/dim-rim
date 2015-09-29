@@ -1,0 +1,2181 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<title>Data Ingestion Manager</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:24.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:21.6pt;
+	margin-bottom:.0001pt;
+	text-indent:-21.6pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	margin-bottom:.0001pt;
+	text-indent:-28.8pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-36.0pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+h4
+	{mso-style-link:"Heading 4 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	margin-bottom:.0001pt;
+	text-indent:-43.2pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	margin-bottom:.0001pt;
+	text-indent:-50.4pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#243F60;
+	font-weight:normal;}
+h6
+	{mso-style-link:"Heading 6 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	margin-bottom:.0001pt;
+	text-indent:-57.6pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#243F60;
+	font-weight:normal;
+	font-style:italic;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	margin-bottom:.0001pt;
+	text-indent:-64.8pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#404040;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-72.0pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	color:#404040;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	margin-bottom:.0001pt;
+	text-indent:-79.2pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	color:#404040;
+	font-style:italic;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:11.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:22.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-link:"Footnote Text Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Header Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"Footer Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:15.0pt;
+	margin-left:0cm;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{mso-style-link:"No Spacing Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:24.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-link:"Heading 3";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.Heading4Char
+	{mso-style-name:"Heading 4 Char";
+	mso-style-link:"Heading 4";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.Heading5Char
+	{mso-style-name:"Heading 5 Char";
+	mso-style-link:"Heading 5";
+	font-family:"Cambria","serif";
+	color:#243F60;}
+span.Heading6Char
+	{mso-style-name:"Heading 6 Char";
+	mso-style-link:"Heading 6";
+	font-family:"Cambria","serif";
+	color:#243F60;
+	font-style:italic;}
+span.Heading7Char
+	{mso-style-name:"Heading 7 Char";
+	mso-style-link:"Heading 7";
+	font-family:"Cambria","serif";
+	color:#404040;
+	font-style:italic;}
+span.Heading8Char
+	{mso-style-name:"Heading 8 Char";
+	mso-style-link:"Heading 8";
+	font-family:"Cambria","serif";
+	color:#404040;}
+span.Heading9Char
+	{mso-style-name:"Heading 9 Char";
+	mso-style-link:"Heading 9";
+	font-family:"Cambria","serif";
+	color:#404040;
+	font-style:italic;}
+span.FootnoteTextChar
+	{mso-style-name:"Footnote Text Char";
+	mso-style-link:"Footnote Text";}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:15.0pt;
+	margin-left:0cm;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+p.msolistparagraphcxspfirst, li.msolistparagraphcxspfirst, div.msolistparagraphcxspfirst
+	{mso-style-name:msolistparagraphcxspfirst;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.msolistparagraphcxspmiddle, li.msolistparagraphcxspmiddle, div.msolistparagraphcxspmiddle
+	{mso-style-name:msolistparagraphcxspmiddle;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.msolistparagraphcxsplast, li.msolistparagraphcxsplast, div.msolistparagraphcxsplast
+	{mso-style-name:msolistparagraphcxsplast;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri","sans-serif";}
+p.msopapdefault, li.msopapdefault, div.msopapdefault
+	{mso-style-name:msopapdefault;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.NoSpacingChar
+	{mso-style-name:"No Spacing Char";
+	mso-style-link:"No Spacing";
+	font-family:"Calibri","sans-serif";}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-link:Header;
+	font-family:"Times New Roman","serif";}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-link:Footer;
+	font-family:"Times New Roman","serif";}
+.MsoChpDefault
+	{font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 2.0cm 2.0cm 2.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=IT link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse'>
+ <tr style='height:144.0pt'>
+  <td width="100%" valign=top style='width:100.0%;padding:0cm 5.4pt 0cm 5.4pt;
+  height:144.0pt'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><span
+  lang=EN-US style='font-family:"Cambria","serif";text-transform:uppercase'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:72.0pt'>
+  <td width="100%" style='width:100.0%;border:none;border-bottom:solid #4F81BD 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:72.0pt'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><span
+  lang=EN-US style='font-size:40.0pt;font-family:"Cambria","serif"'>Data Ingestion
+  Manager</span></p>
+  </td>
+ </tr>
+ <tr style='height:36.0pt'>
+  <td width="100%" style='width:100.0%;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+  height:36.0pt'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><span
+  lang=EN-US style='font-size:22.0pt;font-family:"Cambria","serif"'>User Manual
+  ver. 1.1</span></p>
+  </td>
+ </tr>
+ <tr style='height:18.0pt'>
+  <td width="100%" style='width:100.0%;padding:0cm 5.4pt 0cm 5.4pt;height:18.0pt'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><span
+  lang=EN-US>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:18.0pt'>
+  <td width="100%" style='width:100.0%;padding:0cm 5.4pt 0cm 5.4pt;height:18.0pt'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><b><span
+  lang=EN-US>Ivan Bruno</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:18.0pt'>
+  <td width="100%" style='width:100.0%;padding:0cm 5.4pt 0cm 5.4pt;height:18.0pt'>
+  <p class=MsoNoSpacing align=center style='text-align:center'><b><span
+  lang=EN-US>8/27/2015</span></b></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<b><span lang=EN-US style='font-size:14.0pt;line-height:115%;font-family:"Cambria","serif";
+color:#365F91'><br clear=all style='page-break-before:always'>
+</span></b>
+
+<p class=MsoTocHeading><span lang=EN-US>&nbsp;</span></p>
+
+<span lang=EN-US style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:26.0pt;line-height:115%;
+font-family:"Cambria","serif";color:#17365D;letter-spacing:.25pt'>&nbsp;</span></p>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0cm 0cm 4.0pt 0cm'>
+
+<p class=MsoTitle><span lang=EN-US>Data Ingestion Manager User Manual</span></p>
+
+</div>
+
+<h1><a name="_Toc428452571"><span lang=EN-US>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Overview</span></a></h1>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Data Ingestion Manager
+(DIM) allows the creation of Data records, setup and management of the
+ingestion process. The ingestion process starts by collecting raw Data and ends
+with the generation of RDF Triples according to the domain ontology model
+adopted. The creation of Data record and properties allows the insertion and
+editing of a Data in the repository. Data are described by a set of properties
+to be set like:  Name, Category, Resource, Source, Format, Type (real-time or
+static) and more (see section 2.2 for a full list). The setup and management of
+ingestion process allows selecting tasks to execute both in the creation step
+and during the life of data for update purposes. The following tasks are
+available and could be executed singularly or joined (“concatenate”):  </span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-US>Ingestion (I)</span></b><span lang=EN-US> </span><span
+lang=EN-GB>of the data instances performs the raw data retrieval from the
+source where the Data is stored</span><span lang=EN-US>.</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-US>Quality Improvement (QI) </span></b><span
+lang=EN-GB>task is focused on enriching the Data by adding for instance links
+to external Linked Open Data (LOD) or refining possible inconsistences.</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-US>Triples Generation (T) </span></b><span
+lang=EN-US>performs the<b> </b>generation of RDF Triples by mapping static,
+dynamic data on the basis of the domain ontology model.</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-US>Validation</span></b><span lang=EN-US> <b>(V)</b>
+of the Data detects possible inconsistencies, incompleteness, correctness of
+relationships, etc… </span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-US>Reconciliation (R) </span></b><span
+lang=EN-US>task<b> </b>tries to solve the lack of coherence among indexed
+entities referring to the same concept but coming from different data sets.</span></p>
+
+<h1><a name="_Toc428452572"><span lang=EN-US>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Getting started</span></a></h1>
+
+<h2><a name="_Toc428452573"><span lang=EN-US>2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Application setup</span></a></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The Data Ingestion
+Manager Application has to be configured to work with a Database (MySQL) where
+Data description and Scheduled Tasks are stored and the Task Scheduler and
+Manager Application (<i>Smart Cloud Engine</i>). The configuration properties
+are accessible in the “Preferences” tab panel (Section 3.2.3). Settings are:</span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>MySQL Settings</span></b></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-US>Parameter</span></b></p>
+  </td>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-US>Description</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Data Source Database User Name </span></p>
+  </td>
+  <td width=326 valign=top style='width:244.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>The MySQL user entitled to access to the database.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Data Source Database Password </span></p>
+  </td>
+  <td width=326 valign=top style='width:244.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>The MySQL user password.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Data Source Database URL </span></p>
+  </td>
+  <td width=326 valign=top style='width:244.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>The MySQL location URL.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Data Source Database Name #1 </span></p>
+  </td>
+  <td width=326 valign=top style='width:244.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>The database schema name where Open Data are stored.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Task Scheduler Database Name #2 </span></p>
+  </td>
+  <td width=326 valign=top style='width:244.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>The database schema name where Scheduled Tasks are
+  stored.</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><b><span lang=EN-US>&nbsp;</span></b></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Scheduler Settings</span></b></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-US>Parameter</span></b></p>
+  </td>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-US>Description</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Open Data Manager Scheduler URL to use </span></p>
+  </td>
+  <td width=326 valign=top style='width:244.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>The endpoint of API interface provided by the Smart
+  Cloud Engine.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=326 valign=top style='width:244.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Open Data Manager Scheduler Web Page URL</span></p>
+  </td>
+  <td width=326 valign=top style='width:244.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>The web URL of the Smart Cloud Engine Front End.</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<h2 style='text-indent:0cm'><span lang=EN-US>&nbsp;</span></h2>
+
+<h2><a name="_Toc428452574"><span lang=EN-US>2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Data Description</span></a></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The following table
+reports and describes all properties associated with a Data. They are divided
+by groups: <i>Description (D)</i>, <i>Ingestion (I)</i>, <i>Quality Improvement
+(QI)</i>, <i>Triples Generation (T)</i>, <i>Validation (V)</i>, <i>Reconciliation
+(R)</i>, and <i>General (G)</i>. For each property the description and type-value
+are provided.</span></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=137 valign=top style='width:102.65pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-US>Group</span></b></p>
+  </td>
+  <td width=163 valign=top style='width:122.35pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-US>Parameter</span></b></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-US>Description</span></b></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-US>Type &amp; Value</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=137 rowspan=11 valign=top style='width:102.65pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Description</span></p>
+  </td>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Name (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Name of data set</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Resource (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Data descriptor</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Resource class (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Classification of data</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Category (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Data category</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Source (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Information on the source of the data, i.e. from
+  where the data was obtained.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Format (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Format of data source</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Selection with the following option:</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>csv</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>json</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>kmz</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>shp</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>xml</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>pdf</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>rdf</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>sparql</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>kml</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>grid esri</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Automaticity (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Set data processing mode: manually or automatically</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Selection with the following option: <i>yes</i> or <i>no</i>.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Process type (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Set the process mode adopted i.e. by using ETL
+  process</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Selection with the following option: ETL or Other</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Access (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Channel/Protocol to use for getting data</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Selection with the following option:</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>HTTP</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>WebService</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>Script</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>Manual Request</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>Access</span></p>
+  <p class=MsoListParagraph style='margin-top:0cm;margin-right:0cm;margin-bottom:
+  0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:
+  normal'><span lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=EN-US>Other</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Real time (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Set the nature of data: real-time or static</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Selection with the following option: <i>yes</i> or <i>no</i>.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Security Level</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Set the security Level to the Data</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Selection with the following options:</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>OPEN, PRIVATE, SENSIBLE, CRITICAL</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=137 rowspan=5 valign=top style='width:102.65pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#F79646;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Ingestion</span></p>
+  </td>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79646;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Ing path (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Path where is located the ETL job related to Ingestion
+  phase.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79646;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Ing status</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Status of last Ingestion execution.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79646;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Ing time</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Time processing of last ingestion running</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79646;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Last update</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Date of last Ingestion execution.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79646;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Ing Error</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Ingestion Error description</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=137 rowspan=4 valign=top style='width:102.65pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#84D979;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Quality Improvement</span></p>
+  </td>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#84D979;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>QI path</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Path where is located the ETL job related to QI
+  phase.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#84D979;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>QI status</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Status of execution.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#84D979;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>QI time</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Time processing of last run</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#84D979;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>QI error</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Error description</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=137 rowspan=5 valign=top style='width:102.65pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#C0FB05;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Triples Generation</span></p>
+  </td>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#C0FB05;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>T path (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Path where is located the ETL job related to Triple
+  Generation phase.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#C0FB05;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>T status</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Status of execution.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#C0FB05;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>T time</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Time processing of last run</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#C0FB05;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Last triples date</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Production Date of last triples</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Date</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#C0FB05;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>T error</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Error description</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=137 rowspan=5 valign=top style='width:102.65pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#B8CCE4;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Validation</span></p>
+  </td>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#B8CCE4;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>V path</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Path where is located the ETL job related to
+  Validation phase.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#B8CCE4;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>V status</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Status of execution.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#B8CCE4;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>V time</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Time processing of last run</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#B8CCE4;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Triples Count</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Number of triples to be uploaded into RDF
+  repository.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#B8CCE4;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>V error</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Error description</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=137 rowspan=5 valign=top style='width:102.65pt;border:solid windowtext 1.0pt;
+  border-top:none;background:#F79DF9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Reconciliation</span></p>
+  </td>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79DF9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>R path</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Path where is located the ETL job related to
+  Reconciliation phase.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79DF9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>R status</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Status of execution.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79DF9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>R time</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Time processing of last run</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79DF9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Triples count rep</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Number of triples to uploaded into RDF repository.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#F79DF9;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>R error</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Error description</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=137 rowspan=4 valign=top style='width:102.65pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>General</span></p>
+  </td>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Period (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Repeat time of process execution (in ms).</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Positive Number. (Default value 0 for static data)</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Overtime (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Waiting time before stopping process execution (in
+  ms).</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Positive Number</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>(Default value 0)</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Param (*)</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Optional parameters for ETL job.</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>(Default value “”)</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.7pt'>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Description</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Textual description of the data</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Alphanumeric String</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.7pt'>
+  <td width=137 rowspan=2 valign=top style='width:102.65pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>License</span></p>
+  </td>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>License URL</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>The License URL to use for the Data</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Text of URL</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.7pt'>
+  <td width=163 valign=top style='width:122.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>License Text</span></p>
+  </td>
+  <td width=162 valign=top style='width:121.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>The License Textual description</span></p>
+  </td>
+  <td width=157 valign=top style='width:117.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.7pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-US>Text plain or HTML</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<h2 style='text-indent:0cm'><span lang=EN-US>&nbsp;</span></h2>
+
+<h2><a name="_Toc428452575"><span lang=EN-US>2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Tasks description</span></a></h2>
+
+<p class=MsoNormal style='text-align:justify'><i><span lang=EN-US>Ingestion</span></i><span
+lang=EN-US>, <i>Quality Improvement</i>, <i>Triples Generation</i>, <i>Validation</i>,
+<i>Reconciliation </i>and<i> General</i> data are used to set up related tasks
+to be run in the scheduler. The minimal set of data for a task is the path
+where is located the ETL job to execute. The path is the command line to run
+the process In case of ingestion process we can have for example the following
+path definition:</span></p>
+
+<p class=MsoNormal><i><span lang=EN-US>/usr/lib/jvm/java-7-oracle/bin/java
+-Xmx512m -classpath :/home/ubuntu/programs/data-integration/lib/*
+-DDI_HOME=/home/ubuntu/programs/data-integration/
+org.pentaho.di.kitchen.Kitchen
+-file=/media/Trasformazioni/TrasformazioneAVM_new/JobAVM.kjb -level=Nothing
+-param:line=17 -param:processName=avm_linea17</span></i></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>For periodical
+processing (i.e. real time Data), the value of <i>Period</i> has to be provided
+and it has to be expressed in milliseconds. </span></p>
+
+<p class=MsoNormal style='text-align:justify'><i><span lang=EN-US>Param</span></i><span
+lang=EN-US> is required for the task as extra parameters.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><i><span lang=EN-US>Overtime</span></i><span
+lang=EN-US> is the time the scheduler has to wait before stopping the process.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><b><span lang=EN-US>Note:</span></b><span
+lang=EN-US> Since <i>Ingestion</i> and <i>Triples Generations</i> are the
+minimal chain for Data processing, their definition is mandatory. By default,
+tasks of all new Data are not scheduled and the Open Data are disabled for
+processing. This allows verifying the data before starting. After that Open
+Data has been enabled for processing and all tasks can be put in execution in
+the scheduler (see Section 5.).</span></p>
+
+<h1><a name="_Toc428452576"><span lang=EN-US>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Application Layout</span></a></h1>
+
+<p class=MsoNormal><span lang=EN-US>The application provides a menu bar and tab
+panels as depicted in Figure 1.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;page-break-after:avoid'><img
+width=612 height=258 id="Picture 7" src="index_files/image001.jpg"></p>
+
+<p class=MsoCaption align=center style='text-align:center'><span lang=EN-US>Figure
+</span><span lang=EN-US>1</span> - Application Layout</p>
+
+<h2><a name="_Toc428452577">3.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Menu Bar</a></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The application provides
+a drop-down menu in the Menu Bar:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=332
+height=50 id="Picture 5" src="index_files/image002.jpg"></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The menu is structured
+as follows:</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·</span><span lang=EN-US style='font-size:7.0pt;
+line-height:115%;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><b><span lang=EN-US>File</span></b></p>
+
+<p class=MsoListParagraph style='margin-left:54.0pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-US style='font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><b><span
+lang=EN-US>New</span></b><span lang=EN-US> –&nbsp; Create a new Data </span></p>
+
+<p class=MsoListParagraph style='margin-left:54.0pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-US style='font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><b><span
+lang=EN-US>Close</span></b><span lang=EN-US> – Close current activity </span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·</span><span lang=EN-US style='font-size:7.0pt;
+line-height:115%;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><b><span lang=EN-US>Window</span></b></p>
+
+<p class=MsoListParagraph style='margin-left:54.0pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-US style='font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><b><span
+lang=EN-US>Explorer</span></b><span lang=EN-US> – Switch to the corresponding panel
+for managing Data </span></p>
+
+<p class=MsoListParagraph style='margin-left:54.0pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-US style='font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><b><span
+lang=EN-US>Scheduler</span></b><span lang=EN-US> – Switch to the corresponding panel
+for accessing to the Data Process Scheduler View</span></p>
+
+<p class=MsoListParagraph style='margin-left:54.0pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-US style='font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><b><span
+lang=EN-US>Repository </span></b><span lang=EN-US>– Switch to the corresponding
+panel for accessing to the Repository View</span></p>
+
+<p class=MsoListParagraph style='margin-left:54.0pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-US style='font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><b><span
+lang=EN-US>Preferences</span></b><span lang=EN-US> – Switch to the
+corresponding panel for editing the setup &amp; configuration parameters</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·</span><span lang=EN-US style='font-size:7.0pt;
+line-height:115%;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><b><span lang=EN-US>Help </span></b><span lang=EN-US>– Open the Help</span></p>
+
+<h2><a name="_Toc428452578"><span lang=EN-US>3.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Tab Panels</span></a></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>They provide the
+view panels for:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=451
+height=36 id="Picture 27" src="index_files/image003.jpg"></p>
+
+<h3><a name="_Toc428452579"><span lang=EN-US>3.2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Explorer</span></a></h3>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>This is the view
+on the database of Data. It provides a table data view with pagination system,
+a command bar, search and help tools.</span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Table data view</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Data are listed
+in a table data view. Columns are sortable and grouped according to the section
+2.2. Two additional set of columns are added on the left. Such columns are: <i>Edit</i>
+and <i>Scheduler</i>. The former provides actions for the corresponding Data
+(i.e. Edit) whereas the latter allows defining and controlling tasks allocated
+in the scheduler.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=609
+height=349 id="Picture 43" src="index_files/image004.jpg"></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Command Bar</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>It provides a
+set of commands for <b>Processing</b> control and <b>Data </b>management. </span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=592
+height=26 id="Picture 42" src="index_files/image005.jpg"></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The first allows
+interacting with the Task Scheduler Application and are executed on a selection
+of tasks associated with Data. </span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i><span lang=EN-US>Execute</span></i><span lang=EN-US> – it
+allows running tasks associated with Data</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i><span lang=EN-US>Delete</span></i><span lang=EN-US> -  it
+allows deleting tasks associated with Data</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i><span lang=EN-US>Pause</span></i><span lang=EN-US> -  it
+allows pausing tasks associated with Data</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i><span lang=EN-US>Resume</span></i><span lang=EN-US> -  it
+allows resuming tasks associated with Data</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Commands can be
+invoked if a selection of Tasks is available otherwise the following message is
+popped up: “<i>No data selected! Select data and activities before execute</i>”</span></p>
+
+<p class=MsoNormal><span lang=EN-US>The second set provides commands to
+interact with Data: </span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=EN-US
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i><span lang=EN-US>Add New</span></i><span lang=EN-US> - A
+shortcut to add a new Data </span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=EN-US
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i><span lang=EN-US>Delete</span></i><span lang=EN-US> - Delete a
+selection of Data.</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=EN-US
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i><span lang=EN-US>Enable Processing</span></i><span lang=EN-US>
+– Enable a selection of Data to include them in processing activities.  </span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=EN-US
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i><span lang=EN-US>Disable Processing</span></i><span
+lang=EN-US> – Disable a selection of Data to exclude them from processing. </span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>Search and Help Tools</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>It provides some facilities to refine
+search and browsing data in the table view.</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Show – Set the number of results per page</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Filtering data – It is possible to filter Data
+by:</span></p>
+
+<p class=MsoListParagraph style='margin-left:72.0pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-US style='font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+lang=EN-US>Type: <i>Real time</i>, <i>Static</i> or <i>Any</i>.</span></p>
+
+<p class=MsoListParagraph style='margin-left:72.0pt;text-align:justify;
+text-indent:-18.0pt'><span lang=EN-US style='font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+lang=EN-US>Processing status: <i>Enabled</i>, <i>Disabled</i> or <i>Any</i>. </span></p>
+
+<p class=MsoListParagraph align=center style='margin-left:0cm;text-align:center'><b><img
+width=608 height=40 id="Picture 15" src="index_files/image006.jpg"></b></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Search – Search input allows a textual
+searching.</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Select / Deselect All – It allows multiple
+selections of Data on the current page of results.</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Manual Selection – Clicking a Data row allows
+selecting or deselecting it.</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Refresh – It allows refreshing the current page
+of results</span></p>
+
+<p class=MsoListParagraph style='text-align:justify;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Show / Hide columns – It allows hiding (showing)
+the following groups of column: <i>Ingestion</i>, <i>Quality Improvement</i>, <i>Triples
+Generation</i>, <i>Validation</i> <i>and Reconciliation</i>.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img width=603
+height=45 id="Picture 16" src="index_files/image007.jpg"></p>
+
+<h3><a name="_Toc428452580"><span lang=EN-US>3.2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Scheduler</span></a></h3>
+
+<p class=MsoNormal><span lang=EN-US>This view embeds the Scheduler Front End
+and allows browsing and monitoring the current status of tasks.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;page-break-after:avoid'><img
+width=578 height=229 id="Picture 10" src="index_files/image008.jpg"></p>
+
+<p class=MsoCaption align=center style='text-align:center'><span lang=EN-US>Figure
+</span><span lang=EN-US>2</span><span lang=EN-US> - Smart Cloud Engine</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Please refers to
+the guide available at the link </span><a
+href="http://www.disit.org/drupal/?q=en-US/home&amp;axoid=urn%3Aaxmedis%3A00000%3Aobj%3A0a4cdfa0-135a-4b5d-837b-5cf1b3507089"><span
+lang=EN-US>http://www.disit.org/drupal/?q=en-US/home&amp;axoid=urn%3Aaxmedis%3A00000%3Aobj%3A0a4cdfa0-135a-4b5d-837b-5cf1b3507089</span></a></p>
+
+<h3><a name="_Toc428452581"><span lang=EN-US>3.2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Repository</span></a></h3>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>This tab
+provides the access to the repositories of triples for each data. A view of file
+system is displayed to allow user to browse the folder associated with each
+data (Figure 3) until the triples files level (Figure 4).</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=525 height=242 id="Picture 26" src="index_files/image009.jpg"></p>
+
+<p class=MsoCaption align=center style='text-align:center'><span lang=EN-US>Figure
+</span><span lang=EN-US>3</span><span lang=EN-US>- Repository View (Main Root)</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=526 height=244 id="Picture 28" src="index_files/image010.jpg"></p>
+
+<p class=MsoCaption align=center style='text-align:center'><span lang=EN-US>Figure
+</span><span lang=EN-US>4</span><span lang=EN-US>- Repository View (Triples
+Files level)</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<h3><a name="_Toc428452582"><span lang=EN-US>3.2.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Properties</span></a></h3>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>This view
+provides the form for configuring the application. The following form asks for
+settings as described in section 2.1</span></p>
+
+<p class=MsoListParagraph align=center style='margin-left:18.0pt;text-align:
+center;text-indent:-18.0pt;page-break-after:avoid'><img border=0 width=642
+height=269 id="Picture 12" src="index_files/image011.jpg"></p>
+
+<p class=MsoCaption align=center style='text-align:center'>Figure 5 - Configuration Settings</p>
+
+<h1><a name="_Toc428452583"><span lang=EN-US>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Edit a Data</span></a></h1>
+
+<p class=MsoNormal><span lang=EN-US>In this section is described how to insert
+a new Data or update an existing one.</span></p>
+
+<h2><a name="_Toc428452584"><span lang=EN-US>4.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Create a new Data</span></a></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>To add a new
+Data click <b>File-&gt;New</b> in the menu bar or “<b>Add New</b>” in the
+Explorer Panel. The form depicted in Figure 4 is displayed. The Data Properties
+are divided by groups (tabs) as described in section 2.2. Mandatory fields are
+marked with (*). </span></p>
+
+<p class=MsoNormal align=center style='text-align:center;page-break-after:avoid'><img
+border=0 width=302 height=253 id="Picture 29" src="index_files/image012.jpg"></p>
+
+<p class=MsoCaption align=center style='text-align:center'><span lang=EN-US>Figure
+</span><span lang=EN-US>6</span><span lang=EN-US> - Data Edit Dialog</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Click <i>Save</i>
+to send data or <i>Close</i> to abort the editing.</span></p>
+
+<h2><a name="_Toc428452585"><span lang=EN-US>4.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Data validation</span></a></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Before sending
+data, the form is validated against required data. In event of missing data, a
+list is displayed with a button “<i>Edit</i>”; by clicking on the button the
+form displays the tab containing the missing field highlighted in red.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;page-break-after:avoid'><img
+border=0 width=354 height=298 id="Picture 30" src="index_files/image013.jpg"></p>
+
+<p class=MsoCaption align=center style='text-align:center'><span lang=EN-US>Figure
+</span><span lang=EN-US>7</span><span lang=EN-US> - Data Edit Dialog after
+validation</span></p>
+
+<h2><a name="_Toc428452586"><span lang=EN-US>4.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Update Metadata of Data</span></a><span
+lang=EN-US> </span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Click on the
+button </span><img border=0 width=28 height=28 id="Picture 4"
+src="index_files/image014.jpg"> <span lang=EN-US>in <i>Actions</i> column to
+update a Data. The form described in section 4.1 will be displayed. In this
+case, the Data <i>Name</i> attribute is disabled and cannot be modified.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=288 height=243 id="Picture 31" src="index_files/image015.jpg"></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Click <i>Save</i>
+to send data or <i>Close</i> to abort the editing.</span></p>
+
+<h3><a name="_Toc428452587"><span lang=EN-US>4.3.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Inline Editing</span></a></h3>
+
+<p class=MsoNormal><span lang=EN-US>Double click on a data cell allows editing
+the value inline: a text control is displayed to edit the value. Click <i>Enter</i>
+key on keyboard to end and send changes. Press <i>ESC</i> key to abort.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;page-break-after:avoid'><img
+border=0 width=301 height=77 id="Picture 18" src="index_files/image016.jpg"></p>
+
+<p class=MsoCaption align=center style='text-align:center'>Figure 8 - Inline Editing</p>
+
+<h2><a name="_Toc428452588"><span lang=EN-US>4.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Browse Triples Files of Data</span></a></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Click on the
+button </span><img border=0 width=33 height=30 id="Picture 36"
+src="index_files/image017.jpg"><span lang=EN-US> in <i>Actions</i> column to
+open the Data Folder in the Repository of triples files. A dialog will display
+the list of folders and user can browse them by clicking on File entries/links.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=241 height=219 id="Picture 37" src="index_files/image018.jpg"></p>
+
+<h2 style='text-indent:0cm'><span lang=EN-US>&nbsp;</span></h2>
+
+<h2><a name="_Toc428452589"><span lang=EN-US>4.5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>View License of a Data</span></a></h2>
+
+<p class=MsoNormal><span lang=EN-US>Click on the button </span><img border=0
+width=33 height=32 id="Picture 41" src="index_files/image019.jpg"><span
+lang=EN-US> in <i>Actions</i> column to open the License Data Information
+Dialog. It will display the License Text associated with the data.</span></p>
+
+<h2><a name="_Toc428452590"><span lang=EN-US>4.6<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Selecting Data</span></a></h2>
+
+<p class=MsoNormal><span lang=EN-US>Click on the row to select a Data row in
+the table. To select all or deselect Data click on the button of <b>Search and
+Help Tools. </b>Selected rows will be highlighted as depicted in Figure 9.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;page-break-after:avoid'><img
+border=0 width=603 height=322 id="Picture 34" src="index_files/image020.jpg"></p>
+
+<p class=MsoCaption align=center style='text-align:center'>Figure 9 - Selection of rows</p>
+
+<h1><a name="_Toc428452591"><span lang=EN-US>5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Working with tasks</span></a><span lang=EN-US> </span></h1>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>All Data
+disabled for processing are marked as <i>Processing Disabled</i>.  For all Data
+enabled for processing the Scheduler Column provides: the launch status of
+tasks (for I, QI etc…) in the sub-column Launch and a Tasks Selector panel (checkboxes)
+for choosing tasks to be controlled. Running tasks are highlighted and
+information about their activities is reported in the corresponding columns
+(sections) of the row in the table.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=580 height=309 src="index_files/image021.gif"></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<h2><a name="_Toc428452592"><span lang=EN-US>5.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Controlling tasks</span></a></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Tasks can be
+controlled for Data enabled and ready for processing. The following commands
+are available.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><img border=0
+width=584 height=72 id="Picture 33" src="index_files/image022.jpg"></p>
+
+<h3><a name="_Toc428452593"><span lang=EN-US>5.1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Activate/Executing</span></a></h3>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>One or more tasks
+can be activated by clicking on the corresponding checkbox of Tasks Selector. To
+send to the scheduler (SCE) the execution command about the choice done it is
+necessary to click on the Execute command in the <b>Processing</b> command bar.
+</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>To execute tasks
+for a selection of Data, click on checkboxes in Scheduler header to apply the
+choice to all Open Data and then click on the Execute command in the <b>Processing</b>
+command bar.</span></p>
+
+<h3><a name="_Toc428452594"><span lang=EN-US>5.1.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Pause/Resume</span></a></h3>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>If one or more
+tasks have to be paused/resumed, click on the corresponding checkbox of Tasks
+Selector. To send to the scheduler (SCE) the pause/resume command about the
+choice done it is necessary to click on the Pause/Resume command in the <b>Processing</b>
+command bar. </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>To pause/resume
+tasks for a selection of Data, click on checkboxes in Scheduler header to apply
+the choice to all Open Data and then click on the Pause/Resume command in the <b>Processing</b>
+command bar.</span></p>
+
+<h3><a name="_Toc428452595"><span lang=EN-US>5.1.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Delete</span></a></h3>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>If one or more
+tasks have to be deleted, click on the corresponding checkbox of Tasks Selector.
+To send to the scheduler (SCE) the delete command about the choice done click
+on the Delete command in the <b>Processing</b> command bar. </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>To delete tasks
+for a selection of Data, click on checkboxes in Scheduler header to apply the
+choice to all Open Data and then click on the Delete command in the <b>Processing</b>
+command bar.</span></p>
+
+<h3><a name="_Toc428452596"><span lang=EN-US>5.1.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Concatenate Tasks</span></a></h3>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Selecting the
+“concatenate” option, all selected tasks are joined: they are executed as an
+ordered sequence of tasks</span></p>
+
+</div>
+
+</body>
+
+</html>

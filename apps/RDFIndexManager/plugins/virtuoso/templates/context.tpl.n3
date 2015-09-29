@@ -1,0 +1,14 @@
+<!--%tpl_context--><!--%tpl_repeat_context-->
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://purl.org/dc/terms/source> """{Source}""" .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://purl.org/dc/terms/title> """{Resource}""" .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://purl.org/dc/terms/description> """{description}""" .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://www.disit.org/km4city/schema#lastUpdate> "{last_update}"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://www.disit.org/km4city/schema#lastTriples> "{last_triples}"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://www.disit.org/km4city/schema#overtime> """{overtime}""" .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://purl.org/dc/terms/format> """{Format}""" .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://www.disit.org/km4city/schema#period> """{period}""" .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://purl.org/dc/terms/license> """{LicenseUrl}""" .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://purl.org/dc/terms/rights> """{LicenseText}""" .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://www.disit.org/km4city/schema#automaticity> """{Automaticity}""" .
+<http://www.disit.org/km4city/resource/{Category}/{process}> <http://www.disit.org/km4city/schema#accessType> """{Access}""" .
+<!--%%tpl_repeat_context-->{context}<!--%%tpl_context-->

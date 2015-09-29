@@ -1,0 +1,138 @@
+<html>
+<header></header>
+<body>
+<div class=tab-content>
+		 <div class="panel-body tab-pane active" id=description>
+			 <div class="form-group">
+	            <input id="Process" name="process" placeholder="Name (*)" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group">
+			<input id="Resource" name="Resource" placeholder="Resource (*)" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group"><input id="ResourceClass" name="Resource_Class" placeholder="Resource class (*)" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group"><input id="Category" name="Category" placeholder="Category (*)" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group"><input id="Source" name="Source" placeholder="Source (*)" type="text" data-tab="description" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group"><select id="Format" name="Format" placeholder="Format (*)"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Format (*)</option>
+			<option value=csv>csv</option>
+			<option value=json>json</option>
+			<option value=kmz>kmz</option>
+			<option value=shp>shp</option>
+			<option value=xml>xml</option>
+			<option value=pdf>pdf</option>
+			<option value=rdf>rdf</option>
+			<option value=sparql>sparql</option>
+			<option value=kml>kml</option>
+			<option value="grid esri">grid esri</option>
+			</select>
+			</div>
+		     <div class="form-group"><select id="Automaticity" name="Automaticity" placeholder="Automaticity (*)"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Automaticity (*)</option>
+			<option value=manual>Manual</option>
+			<option value=automatic>Automatic</option>
+			</select>
+			</div>
+		     <div class="form-group"><select id="ProcessType" name="Process_type" placeholder="Process type (*)"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Process type (*)</option>
+			<option value=ETL>ETL</option>
+			<option value=Other>Other</option>
+			</select>
+			</div>
+		     <div class="form-group"><select id="Access" name="Access" placeholder="Access (*)"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Access (*)</option>
+			<option value=HTTP>HTTP</option>
+			<option value=WebService>WebService</option>
+			<option value=Script>Script</option>
+			<option value="Manual Request">Manual Request</option>
+			<option value=Access>Access</option>
+			<option value=Other>Other</option>
+			</select>
+			</div>
+		     <div class="form-group"><select id="RealTime" name="Real_time" placeholder="Real time (*)"  data-tab="description" class="processRow form-control" required="required">
+			<option value="" disabled selected>Real time (*)</option>
+			<option value=yes>Yes</option>
+			<option value=no>No</option>
+			</select>
+			</div>
+			
+		</div>
+		<div class="tab-pane panel-body" id=Ingestion>
+		    <div class="form-group">	<input id="IngPath" name="A" placeholder="Ing path (*)" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control" required="required">
+			</div>
+		    <div class="form-group"><input id="IngStatus" name="status_A" placeholder="Ing status" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control">
+			</div>
+		    <div class="form-group"><input id="IngTime" name="time_A" placeholder="Ing time" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control">
+			</div>
+		    <div class="form-group"><input id="LastUpdate" name="last_update" placeholder="Last update" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control">
+			</div>
+		    <div class="form-group"><input id="IngError" name="error_A" placeholder="IngError" type="text" style="background:#FFC299" data-tab="Ingestion" class="processRow form-control">
+			</div>
+		</div>
+		<div class="tab-pane panel-body" id=QI>	
+			
+		    <div class="form-group"><input id="QIPath" name="B" placeholder="QI path" type="text" style="background:#B3F0B3" data-tab="QI" class="processRow form-control" >
+			</div>
+		    <div class="form-group"><input id="QIStatus" name="status_B" placeholder="QI status" type="text" style="background:#B3F0B3" data-tab="QI" class="processRow form-control">
+			</div>
+		    <div class="form-group"><input id="QITime" name="time_B" placeholder="QI time" type="text" style="background:#B3F0B3" data-tab="QI" class="processRow form-control">
+			</div>
+		    <div class="form-group"><input id="QIError" name="error_B" placeholder="QI error" type="text" style="background:#B3F0B3" data-tab="QI" class="processRow form-control">
+			</div>
+		</div>
+		<div class="tab-pane panel-body" id=Triples>	
+			
+		    <div class="form-group"><input id="TPath" name="C" placeholder="T path (*)" type="text" style="background:#E6FF99" data-tab="Triples" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group"><input id="TStatus" name="status_C" placeholder="T status" type="text" style="background:#E6FF99" data-tab="Triples" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="TTime" name="time_C" placeholder="T time" type="text" style="background:#E6FF99" data-tab="Triples" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="LastTriplesDate" name="last_triples" placeholder="Last triples date" type="hidden" style="background:#E6FF99" data-tab="Triples" class="processRow form-control" value="1970-01-01T01:00:00.000">
+			</div>
+		     <div class="form-group"><input id="TError" name="error_C" placeholder="T error" type="text" style="background:#E6FF99" data-tab="Triples" class="processRow form-control">
+			</div>
+		</div>
+		<div class="tab-pane panel-body" id=Validation>	
+		     <div class="form-group"><input id="VPath" name="D" placeholder="V path" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="VStatus" name="status_D" placeholder="V status" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="VTime" name="time_D" placeholder="V time" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="TriplesCount" name="Triples_count" placeholder="Triples count" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="VError" name="error_D" placeholder="V error" type="text" style="background:#DAE6FF" data-tab="Validation" class="processRow form-control">
+			</div>
+		</div>
+		<div class="form-group tab-pane panel-body" id=Reconciliation>	
+		     <div class="form-group"><input id="RPath" name="E" placeholder="R path" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="RStatus" name="status_E" placeholder="R staus" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="RTime" name="time_E" placeholder="R time" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="TriplesCountRep" name="Triples_countRepository" placeholder="Triples count rep" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		     <div class="form-group"><input id="RError" name="error_E" placeholder="R error" type="text" style="background:#FFD6FF" data-tab="Reconciliation" class="processRow form-control">
+			</div>
+		</div>	
+		<div class="form-group tab-pane panel-body" id=General>	
+          	
+		     <div class="form-group"><input id="Period" name="period" placeholder="Period (*)" type="text" data-tab="General" class="processRow form-control" required="required">
+          	</div>
+		     <div class="form-group"><input id="Overtime" name="period" placeholder="Overtime (*)" type="text" data-tab="General" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group"><input id="Param" name="param" placeholder="Param (*)" type="text" data-tab="General" class="processRow form-control" required="required">
+			</div>
+		     <div class="form-group"><input id="Description" name="description" placeholder="Description" type="text" data-tab="General" class="processRow form-control">
+			</div>
+		</div>
+        </div>
+          <input type=submit class=hidden id=save>
+        </form>
+      </div>
+	  </body>
+	  </html>
