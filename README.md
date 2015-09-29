@@ -3,6 +3,7 @@
 Copyright (C) 2015 DISIT Lab http://www.disit.org - University of Florence
 
 **Dependencies**
+
 - Apache Web Server ver. 2 and url rewrite module on
 - MySQL 5.x
 - PHP 5.x
