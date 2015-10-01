@@ -16,6 +16,7 @@
 
 define("TAB_LEFT","tabs-left");
 define("TAB_RIGHT","tabs-right");
+define("TAB_BOTTOM","tabs-bottom");
 
 class sm_Tabs extends sm_UIElement
 {
@@ -48,15 +49,21 @@ class sm_Tabs extends sm_UIElement
 		$this->class=$class;
 	}
 	
-	function insert($var, $obj)
+	/**
+	 * @param string $id of a tab
+	 * @param array $panel ['title','paneldata','panel_class'] where "paneldata" is an UIElement to be redered as panel
+	 * 
+	 * @see sm_UIElement::insert()
+	 */
+	function insert($id, $panel)
 	{
-		if(isset($obj['title']) && isset($obj['paneldata']))
+		if(isset($panel['title']) && isset($panel['paneldata']))
 		{
-			$this->tabs[$var]=array(
-					"tab_id"=>$var,
-					"tab_title"=>$obj['title'],
-					"tab_data"=>$obj['paneldata'],
-					"tab_panel_class"=>isset($obj['panel_class'])?$obj['panel_class']:""
+			$this->tabs[$id]=array(
+					"tab_id"=>$id,
+					"tab_title"=>$panel['title'],
+					"tab_data"=>$panel['paneldata'],
+					"tab_panel_class"=>isset($panel['panel_class'])?$panel['panel_class']:""
 			);
 		}
 		
@@ -75,6 +82,11 @@ class sm_Tabs extends sm_UIElement
 	function setRightOrientation()
 	{
 		$this->orientation=TAB_RIGHT;
+	}
+	
+	function setBottomOrientation()
+	{
+		$this->orientation=TAB_BOTTOM;
 	}
 	
 	function render()

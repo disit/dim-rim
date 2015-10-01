@@ -16,6 +16,11 @@
 
 class sm_TableDataViewActions extends sm_HTML
 {
+	function __construct($id=null,$parent=null)
+	{
+		parent::__construct($id,$parent);
+	}
+	
 	function insertArray($commands=array())
 	{
 		foreach ($commands as $k=>$item)
@@ -309,8 +314,8 @@ class sm_TableDataView extends sm_HTML//sm_Table
 		$this->insert("table", $this->table);
 		if($this->sortable)
 			$this->makeSortable();
-		$this->table->addJS('bootbox.js',$this->tpl_id,'js/bootbox/');
-		$this->table->addCSS("sm_tabledataview.css",$this->tpl_id,"css/sm_ui/");
+		$this->addJS('bootbox.js',$this->tpl_id,'js/bootbox/');
+		$this->addCSS("sm_tabledataview.css",$this->tpl_id,"css/sm_ui/");
 		
 		if($this->ajax)
 		{
@@ -318,9 +323,9 @@ class sm_TableDataView extends sm_HTML//sm_Table
 		}
 		if(count($this->jsOptions)>0)
 		{
-			$this->table->addJS('sm_tabledataview.js',$this->tpl_id,'js/sm_ui/');
+			$this->addJS('sm_tabledataview.js',$this->tpl_id,'js/sm_ui/');
 			$json_string = json_encode($this->jsOptions);
-			$this->table->addJs('$(document).ready(
+			$this->addJs('$(document).ready(
 					function(){
 						$("div#smTableDataView").smTableDataView(
 							'.$json_string.'

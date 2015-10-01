@@ -19,6 +19,7 @@ class sm_Table_Cell extends sm_HTML
 	protected $attrs;
 	protected $data;
 	
+	
 	function sm_Table_Cell($id=null,$attrs=array())
 	{
 		parent::__construct($id);
