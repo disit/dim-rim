@@ -46,7 +46,7 @@ class SiiMobilityIndexGeneratorController extends sm_ControllerElement
 	 */
 	function editor_help()
 	{
-		$data['url']="help/index.html";
+		$data['url']=SiiMobilityApp::getFolderUrl("help")."index.html";
 		$this->view = new SiiMobilityIndexGeneratorView($data);
 		$this->view->setOp("help");
 	}

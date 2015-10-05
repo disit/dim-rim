@@ -81,6 +81,36 @@ var IndexManager={
 						}
 					})
 					
+		}, 
+		unlockIndex:function(link)
+		{
+			this.showWait();
+			$.getJSON(link,function(data)			
+					{
+						IndexManager.hideWait();
+						if(data.result)
+						{
+							$("#system-message").hide();
+							$("#system-message").html(data.result);
+							$("#system-message").show().animate({opacity: 1.0}, 3000).fadeOut(1000);
+						}
+					})
+					
+		},
+		lockIndex:function(link)
+		{
+			this.showWait();
+			$.getJSON(link,function(data)			
+					{
+						IndexManager.hideWait();
+						if(data.result)
+						{
+							$("#system-message").hide();
+							$("#system-message").html(data.result);
+							$("#system-message").show().animate({opacity: 1.0}, 3000).fadeOut(1000);
+						}
+					})
+					
 		},
 		validateIndex:function(link)
 		{
@@ -358,7 +388,23 @@ var IndexManager={
 			  return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
 		  */
 			return null;
-		}
+		},
+		showWait:function()
+		{
+			$.blockUI({ css: { 
+		        border: 'none', 
+		        padding: '15px', 
+		        backgroundColor: '#000', 
+		        '-webkit-border-radius': '10px', 
+		        '-moz-border-radius': '10px', 
+		        opacity: .5, 
+		        color: '#fff' 
+		    } }); 
+		},
+		hideWait:function()
+		{
+			$.unblockUI();
+		},
 }
 
 $(document).ready(function(){

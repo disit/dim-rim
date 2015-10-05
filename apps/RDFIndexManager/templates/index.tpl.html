@@ -40,7 +40,9 @@
 							<li role="presentation" class="divider"></li>
 							<li class="header disabled" id="header_build_script"><a href="javascript:void(0)" onclick="IndexManager.buildScript()">Build Script</a></li>
 							<li class="header disabled" id="header_run_script"><a href="javascript:void(0)"	onclick="IndexManager.runScript('IndexGenerator/Builder/Command/Run_Script/{ID}')">Run Script</a></li>
-							
+							<li role="presentation" class="divider"></li>
+							<li class="header disabled" id="header_unlock"><a href="javascript:void(0)" onclick="IndexManager.lockIndex('IndexGenerator/Builder/Command/Lock/{ID}')">Lock all</a></li>
+							<li class="header disabled" id="header_unlock"><a href="javascript:void(0)" onclick="IndexManager.unlockIndex('IndexGenerator/Builder/Command/Unlock/{ID}')">Unlock all</a></li>
 						</ul>
 					</li>
 					<li class="header dropdown">

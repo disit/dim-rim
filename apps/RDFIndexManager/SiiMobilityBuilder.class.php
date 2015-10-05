@@ -93,6 +93,23 @@ class SiiMobilityBuilder
 				return array("message"=>"Script was launched successfully!","result"=>true);
 				break;
 			}
+			case "unlock":
+			{
+				$rep = new SiiMobilityRepository();
+				$rep->load($value);
+				$rep->unlock();
+				return array("message"=>"The index was unlocked!","result"=>true);
+				break;
+			}
+			case "lock":
+			{
+				$rep = new SiiMobilityRepository();
+				$rep->load($value);
+				$rep->lock();
+				return array("message"=>"The index was locked!","result"=>true);
+				break;
+			}
+			
 		}
 	}
 	

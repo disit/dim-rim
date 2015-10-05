@@ -179,6 +179,7 @@ class SiiMobilityIndexGeneratorView extends sm_ViewElement
 		//	$page->addJS("dataTables.responsive.js","indexgenerator",SiiMobilityApp::getFolderUrl("js"));
 			$page->addJS("datepicker.js","indexgenerator",SiiMobilityApp::getFolderUrl("js"));
 			$page->addJS("timepicker.min.js","indexgenerator",SiiMobilityApp::getFolderUrl("js"));
+			$page->addJS("jquery.blockUI.js","indexgenerator",SiiMobilityApp::getFolderUrl("js"));
 			
 			
 			$page->addJS("init.js","indexgenerator",SiiMobilityApp::getFolderUrl("js"));

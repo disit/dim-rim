@@ -10,9 +10,11 @@ Copyright (C) 2015 DISIT Lab http://www.disit.org - University of Florence
 - Operating system tested: Linux Ubuntu, Windows and OSx
 - Tested also with LAMP/XAMPP,  MAMP or WAMP suite.
 - Browser tested: Chrome, Firefox, Safari and IE1x
-- Don't modify the .htaccess in the root folder since it is required for the url rewrite mechanism
+- The .htaccess in the root folder is required for the url rewrite mechanism
 
 **Installation Guide**
+Before start the installation you could need to edit the "structure.inc.php" to set "$baseUrl" and "$baseDir" variables. By default both
+come with the value "/rim/" and if you define a "rim" folder in your apache server document root (htdocs) this is ready to use. If you are going to change this name or the path, you must edit those variables.
 
 Execute installer.php by typing it on the address bar URL of your apache instance of your browser and follow the wizard instructions:
 
@@ -21,5 +23,7 @@ Execute installer.php by typing it on the address bar URL of your apache instanc
 3. Define admin user and password
 4. End installation and redirection to the login page.
 
-Then login in the system package using admin credentials (user:admin and password: admin are preconfigured as default). 
-Then in the system menu select "Applications" and then click "install" on the displayed boxes (RDFIndexManager and DataIngestionManager)
+Login in the system package using admin credentials (user:admin and password: admin are preconfigured as default). 
+Go in the Settings menu and select "Plugins" and install "WebTail" and "Virtuoso" or "Owlim" connector plugins.  
+Finally in the Settings menu select "Applications" and then click "install" on the displayed boxes (RDFIndexManager and DataIngestionManager).
+

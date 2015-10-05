@@ -16,7 +16,7 @@
 
 class CollectionIterator implements Iterator {
 	/**
-	 * This is our collection class, defined later in article.
+	 * This is the collection class
 	 */
 	private $Collection = null;
 	/**
@@ -88,7 +88,7 @@ class CollectionIterator implements Iterator {
 class Collection implements IteratorAggregate {
 
   /**
-   * This is our array with data (collection)
+   * This is the array with data (collection)
    */
   private $data = array();
 
@@ -116,7 +116,7 @@ class Collection implements IteratorAggregate {
     else {
       // key was specified, check if key exists
       if (isset($this->data[$key]))
-        throw new ECollectionKeyInUse($key);
+        throw new Exception($key." already used!");
       else
         $this->data[$key] = $item;
     }
@@ -130,7 +130,7 @@ class Collection implements IteratorAggregate {
     if (isset($this->data[$key]))
       return $this->data[$key];
     else
-      throw new ECollectionKeyInvalid($key);
+      throw new Exception($key." not found!");
   }
 
   /**
@@ -141,7 +141,7 @@ class Collection implements IteratorAggregate {
   public function remove($key){
     // check if key exists
     if (!isset($this->data[$key]))
-      throw new ECollectionKeyInvalid($key);
+      throw  new Exception($key." not found!");
     else
       unset($this->data[$key]);
   }
